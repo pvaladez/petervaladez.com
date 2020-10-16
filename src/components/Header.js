@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styles from '../styles/components/header.module.scss';
 import Logo from './Logo';
+import DarkModeToggle from './DarkModeToggle';
 
 export default function Header(props) {
   return (
@@ -26,6 +27,7 @@ export default function Header(props) {
             <h1>
               <Link to="/contact">Contact</Link>
             </h1>
+            <DarkModeToggle />
             {props.children}
           </div>
         </nav>

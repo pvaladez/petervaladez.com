@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import Layout from '../components/Layout';
 import Logo from '../components/Logo';
+import DarkModeToggle from '../components/DarkModeToggle';
 import SocialMediaLinks from '../components/SocialMediaLinks';
 import styles from '../styles/pages/index.module.scss';
 
@@ -51,6 +52,7 @@ const IndexPage = () => {
             <h1><Link to="/contact">Contact</Link></h1>
           </nav>
           <SocialMediaLinks className={styles.socialMedia} />
+          <DarkModeToggle className={styles.dark_toggle}/>
         </div>
       </Layout>
     </>

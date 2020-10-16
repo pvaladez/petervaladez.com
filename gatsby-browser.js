@@ -1,3 +1,7 @@
-//for importing global styles
-import "./src/styles/reset.scss"
-import "./src/styles/global.scss"
+import React from 'react';
+
+import App from './src/components/App.js';
+
+export const wrapRootElement = ({ element }) => {
+  return <App>{element}</App>;
+};
