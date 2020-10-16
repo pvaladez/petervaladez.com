@@ -25,7 +25,14 @@ export default function Blog({data, pageContext}) {
         </figure>
         <header className={styles.blog__info}>
           <h1>{postData.frontmatter.title}</h1>
-          <h3>{postData.frontmatter.date}</h3>
+          <h4 className={styles.post_date}>
+            <time dateTime={postData.frontmatter.isoDate}>
+              {postData.frontmatter.date}
+            </time>
+            <time dateTime={`PT${postData.timeToRead}M`}>
+              {` · ${postData.timeToRead} min read ⏱️`}
+            </time>
+          </h4>
         </header>
         <section
           className={styles.blog__body}
@@ -67,6 +74,7 @@ export const getPostData = graphql`
         title
         author
         date(formatString: "MMMM Do, YYYY")
+        isoDate: date(formatString: "YYYY-MM-DD")
         hero_image {
           childImageSharp {
             fluid(maxWidth: 1500) {
@@ -76,6 +84,7 @@ export const getPostData = graphql`
         }
       }
       html
+      timeToRead
     }
   }
 `
