@@ -1,55 +1,52 @@
-import React from "react"
-import Layout from "../components/Layout"
-import { graphql, Link } from "gatsby"
-import useBlogData from '../hooks/useBlogData'
-import styles from "../styles/templates/blogPost.module.scss"
-//this component handles the blur img & fade-ins
-import Img from 'gatsby-image'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import Layout from '../components/Layout';
+import styles from '../styles/templates/blogPost.module.scss';
+import { Icon } from '@iconify/react';
+import arrowLeft from '@iconify/icons-codicon/arrow-left';
+import arrowRight from '@iconify/icons-codicon/arrow-right';
+/* import ThemeProvider from '../components/ThemeProvider'; */
 
-export default function Blog(props) {
-  const data = props.data.markdownRemark
-  const allBlogData = useBlogData()
-  const nextSlug = getNextSlug(data.fields.slug)
-
-  function getNextSlug(slug) {
-    const allSlugs = allBlogData.map(blog => {
-      return blog.node.fields.slug
-    })
-    const nextSlug = allSlugs[allSlugs.indexOf(slug) + 1]
-    if(nextSlug !== undefined && nextSlug !== '') {
-      return nextSlug
-    } else {
-      return allSlugs[0]
-    }
-  }
+export default function Blog({data, pageContext}) {
+  const { next, previous } = pageContext;
+  const postData = data.markdownRemark;
 
   return (
-    <Layout>
+    <Layout page="BlogPost" contentClass={styles.content}>
       <article className={styles.blog}>
         <figure className={styles.blog__hero}>
           <Img
-            fluid={data.frontmatter.hero_image.childImageSharp.fluid}
-            alt={data.frontmatter.title}
+            fluid={postData.frontmatter.hero_image.childImageSharp.fluid}
+            alt={postData.frontmatter.title}
           />
         </figure>
-        <div className={styles.blog__info}>
-          <h1>{data.frontmatter.title}</h1>
-          <h3>{data.frontmatter.date}</h3>
-        </div>
-        <div
+        <header className={styles.blog__info}>
+          <h1>{postData.frontmatter.title}</h1>
+          <h3>{postData.frontmatter.date}</h3>
+        </header>
+        <section
           className={styles.blog__body}
-          dangerouslySetInnerHTML={{ __html: data.html }}
-        ></div>
-        <div className={styles.blog__footer}>
-          <h2>
-            Written By: {data.frontmatter.author}
-          </h2>
-          <Link to={`/blog/${nextSlug}`} className={styles.footer__next}>
-            <svg xmlns="http://www.w3.org/2000/svg"  version="1.1" x="0px" y="0px" viewBox="0 0 26 26" enableBackground="new 0 0 26 26" >
-              <path d="M23.021,12.294l-8.714-8.715l-1.414,1.414l7.007,7.008H2.687v2h17.213l-7.007,7.006l1.414,1.414l8.714-8.713  C23.411,13.317,23.411,12.685,23.021,12.294z"/>
-            </svg>
+          dangerouslySetInnerHTML={{ __html: postData.html }}
+        ></section>
+        <footer className={styles.blog__footer}>
+          <Link to={`/blog/${previous !== null ? previous.fields.slug : ''}`} 
+                className={styles.footer__prev}>
+            <Icon icon={arrowLeft} />
+            <h4>{previous !== null ? previous.frontmatter.title : 'All Blogs'}</h4>
+            <h6>{previous !== null ? previous.frontmatter.date : '🚀'}</h6>
           </Link>
-        </div>
+          {/* I am the only author for now... not needed:
+          <h2>
+            Written By: {postData.frontmatter.author}
+          </h2> */}
+          <Link to={`/blog/${next !== null ? next.fields.slug : ''}`} 
+                className={styles.footer__next}>
+            <Icon icon={arrowRight} />
+            <h4>{next !== null ? next.frontmatter.title : 'All Blogs'}</h4>
+            <h6>{next !== null ? next.frontmatter.date : '🚀'}</h6>
+          </Link>
+        </footer>
       </article>
     </Layout>
   )
@@ -60,9 +57,6 @@ export default function Blog(props) {
 export const getPostData = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
-      fields {
-        slug
-      }
       frontmatter {
         title
         author

@@ -23,11 +23,29 @@ module.exports.createPages = async ({ graphql, actions }) => {
   //get slugs
   const response = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(sort: {order: DESC, fields: frontmatter___date}) {
         edges {
           node {
             fields {
               slug
+            }
+          }
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              date(formatString: "MMMM Do, YYYY")
+            }
+          }
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              date(formatString: "MMMM Do, YYYY")
             }
           }
         }
@@ -35,13 +53,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   //create new pages with unique slug
-  response.data.allMarkdownRemark.edges.forEach(edge => {
+  response.data.allMarkdownRemark.edges.forEach(({node, next, previous}) => {
     createPage({
       component: blogTemplate,
-      path: `/blog/${edge.node.fields.slug}`,
+      path: `/blog/${node.fields.slug}`,
       context: {
-        slug: edge.node.fields.slug,
-      },
+        slug: node.fields.slug,
+        next,
+        previous
+      }
     })
   })
 }
