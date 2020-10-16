@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/Layout';
+import Comments from '../components/Comments';
 import styles from '../styles/templates/blogPost.module.scss';
 import { Icon } from '@iconify/react';
 import arrowLeft from '@iconify/icons-codicon/arrow-left';
@@ -11,6 +12,7 @@ import arrowRight from '@iconify/icons-codicon/arrow-right';
 export default function Blog({data, pageContext}) {
   const { next, previous } = pageContext;
   const postData = data.markdownRemark;
+  const commentBox = React.createRef();
 
   return (
     <Layout page="BlogPost" contentClass={styles.content}>
@@ -48,6 +50,10 @@ export default function Blog({data, pageContext}) {
           </Link>
         </footer>
       </article>
+      <section className={styles.comment_section}>
+        <h2 className={styles.comments_title}>Comments:</h2>
+        <Comments commentBox={commentBox} />
+      </section>
     </Layout>
   )
 }
