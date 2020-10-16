@@ -1,15 +1,15 @@
 import React from "react"
 import { Link } from "gatsby"
-import headerStyles from "../styles/components/header.module.scss"
+import styles from "../styles/components/header.module.scss"
 
 export default function Header(props) {
   return (
     <header
-      className={`${headerStyles.header} ${props.page === 'info' &&
-        headerStyles.info_page}`}
+      className={`${styles.header} ${props.page === 'info' &&
+        styles.info_page}`}
     >
       <nav
-        className={headerStyles.header__nav}
+        className={styles.header__nav}
         role="navigation"
         aria-label="main navigation"
       >
@@ -24,7 +24,7 @@ export default function Header(props) {
                   ? "/"
                   : "/info"
               }
-              activeClassName={headerStyles.navItemActive}
+              activeClassName={styles.navItemActive}
             >
               {props.page === 'info'
                 ? "close"

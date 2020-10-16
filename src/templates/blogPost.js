@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/Layout"
 import { graphql, Link } from "gatsby"
 import useBlogData from '../static_queries/useBlogData'
-import blogTemplateStyles from "../styles/templates/blog.module.scss"
+import styles from "../styles/templates/blogPost.module.scss"
 //this component handles the blur img & fade-ins
 import Img from 'gatsby-image'
 
@@ -25,26 +25,26 @@ export default function Blog(props) {
 
   return (
     <Layout>
-      <article className={blogTemplateStyles.blog}>
-        <figure className={blogTemplateStyles.blog__hero}>
+      <article className={styles.blog}>
+        <figure className={styles.blog__hero}>
           <Img
             fluid={data.frontmatter.hero_image.childImageSharp.fluid}
             alt={data.frontmatter.title}
           />
         </figure>
-        <div className={blogTemplateStyles.blog__info}>
+        <div className={styles.blog__info}>
           <h1>{data.frontmatter.title}</h1>
           <h3>{data.frontmatter.date}</h3>
         </div>
         <div
-          className={blogTemplateStyles.blog__body}
+          className={styles.blog__body}
           dangerouslySetInnerHTML={{ __html: data.html }}
         ></div>
-        <div className={blogTemplateStyles.blog__footer}>
+        <div className={styles.blog__footer}>
           <h2>
             Written By: {data.frontmatter.author}
           </h2>
-          <Link to={`blog/${nextSlug}`} className={blogTemplateStyles.footer__next}>
+          <Link to={`blog/${nextSlug}`} className={styles.footer__next}>
             <svg xmlns="http://www.w3.org/2000/svg"  version="1.1" x="0px" y="0px" viewBox="0 0 26 26" enableBackground="new 0 0 26 26" >
               <path d="M23.021,12.294l-8.714-8.715l-1.414,1.414l7.007,7.008H2.687v2h17.213l-7.007,7.006l1.414,1.414l8.714-8.713  C23.411,13.317,23.411,12.685,23.021,12.294z"/>
             </svg>
