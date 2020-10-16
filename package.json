@@ -1,10 +1,10 @@
 {
-  "name": "foresry-starter-blog-gatsby",
+  "name": "petervaladez.com",
   "private": true,
-  "description": "A simple starter blog to get up and developing quickly with Forestry & Gatsby",
+  "description": "Personal site for Peter Valadez built with Gatsby & integrated with Forestry",
   "license": "MIT",
   "version": "0.1.0",
-  "author": "kendall strautman",
+  "author": "peter valadez",
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop -o",
@@ -50,6 +50,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kendallstrautman/brevifolia-gatsby-forestry"
+    "url": "https://github.com/pvaladez/petervaladez.com"
   }
 }
