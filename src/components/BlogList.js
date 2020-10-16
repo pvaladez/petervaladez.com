@@ -8,13 +8,13 @@ export default function BlogList() {
   const blogData = useBlogData()
   function renderBlogData() {
     return (
-      <div>
+      <>
         {blogData
           .filter(blog => blog.node.frontmatter.title !== "")
           .map(blog => {
             return (
-              <Link to={`/blog/${blog.node.fields.slug}`} key={blog.node.id}>
-                <li className={styles.li} key={blog.node.fields.slug}>
+              <Link className={styles.link} to={`/blog/${blog.node.fields.slug}`} key={blog.node.id}>
+                <li className={styles.article} key={blog.node.fields.slug} role="article">
                   <div className={styles.list__hero}>
                     <Img 
                       fluid={
@@ -32,13 +32,11 @@ export default function BlogList() {
               </Link>
             )
           })}
-      </div>
+      </>
     )
   }
   return (
-    <section>
-      <ul className={styles.list}>{renderBlogData()}</ul>
-    </section>
+    <ul className={styles.list}>{renderBlogData()}</ul>
   )
 }
 
