@@ -10,9 +10,17 @@ export default function useSiteMetadata() {
           repoUrl
           infoData {
             contact {
-              email
-              github_handle
-              twitter_handle
+              github {
+                handle
+                url
+              }
+              twitter {
+                handle
+                url
+              }
+              linkedin_url
+              stackoverflow_url
+              devto_url
             }
             cta
             description

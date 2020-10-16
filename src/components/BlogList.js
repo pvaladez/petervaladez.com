@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import useBlogData from "../static_queries/useBlogData"
+import useBlogData from "../hooks/useBlogData"
 import styles from "../styles/components/bloglist.module.scss"
 import Img from 'gatsby-image'
 

@@ -2,9 +2,19 @@
   "description": "<p>This blog was created using <a href=\"https://forestry.io/\" title=\"Forestry Link\">Forestry</a> &amp; <a href=\"https://www.gatsbyjs.org/\" title=\"Gatsby Link\">Gatsby</a></p>",
   "cta": "<p>To get started, import this site into Forestry or checkout the repository <a href=\"https://github.com/kendallstrautman/starter-blog-gatsby\" title=\"Repo Url\">here</a>.</p>",
   "contact": {
-    "email": "info@forestry.io",
-    "twitter_handle": "forestryio",
-    "github_handle": "forestryio"
+    "name": "Peter Valadez",
+    "email": "UseTheContactForm@nospammersallowed.getOn",
+    "twitter": {
+      "handle": "petervaladez",
+      "url": "https://twitter.com/petervaladez"
+    },
+    "github": {
+      "handle": "pvaladez",
+      "url": "https://github.com/pvaladez"
+    },
+    "linkedin_url": "https://www.linkedin.com/in/petervaladez",
+    "stackoverflow_url": "https://stackoverflow.com/users/1289358/peter-valadez",
+    "devto_url": "https://dev.to/pvaladez"
   },
-  "background_color": "#B1BCBC"
+  "background_color": "#FFFFFF"
 }

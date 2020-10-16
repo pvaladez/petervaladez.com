@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/Layout"
 import styles from "../styles/pages/info.module.scss"
-import useSiteMetaData from "../static_queries/useSiteMetadata"
+import useSiteMetaData from "../hooks/useSiteMetadata"
 
 export default function Info() {
   const { infoData } = useSiteMetaData()

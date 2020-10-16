@@ -1,0 +1,30 @@
+@use '../site_variables.scss' as *;
+
+.footer_wrapper {
+  background: hsl(0, 0%, 95%);
+  border-top: 2px solid #d0d0d0;
+}
+
+.footer_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  margin: 0 auto;
+  max-width: $container-width;
+  padding: $container-pad;
+}
+
+.socialMedia {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  li {
+    padding: 0 26px;
+  }
+
+  svg {
+    font-size: 20px;
+  }
+}
