@@ -1,0 +1,4 @@
+@use '../site_variables.scss' as *;
+.content {
+  max-width: $content-width;
+}

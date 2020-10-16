@@ -20,15 +20,15 @@ export default function Header(props) {
           <h1>
             <Link
               to={
-                props.page === 'info'
+                props.page === 'about'
                   ? "/"
-                  : "/info"
+                  : "/about"
               }
               activeClassName={styles.navItemActive}
             >
-              {props.page === 'info'
+              {props.page === 'about'
                 ? "close"
-                : "info"}
+                : "about"}
             </Link>
           </h1>
         </div>

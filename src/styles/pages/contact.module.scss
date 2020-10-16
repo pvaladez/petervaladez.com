@@ -1,0 +1,111 @@
+@use '../site_variables.scss' as *;
+.contact_page {
+  
+
+}
+
+.contact_form {
+  margin: 0 auto;
+
+  input {
+    margin: 0;
+    overflow: visible;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    touch-action: manipulation;
+  }
+
+  textarea {
+    min-height: 200px;
+
+    margin: 0;
+    overflow: auto;
+    resize: vertical;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+}
+
+.error {
+  height: 1.4rem;
+  margin: 0 0 1rem;
+  font-size: .9rem;
+  color: red;
+}
+
+.submit_row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.submit {
+  display: inline-block;
+
+  height: 3rem;
+  margin: .75rem 0 0;
+  padding: 0.375rem 0.75rem;
+  width: 10rem;
+
+  user-select: none;
+  border: 1px solid transparent;
+  
+  border-radius: 0.25rem;
+  transition: background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: $content-width;
+  
+    h1 {
+      width: 100%;
+    }
+  }
+
+  .contact_blurb {
+    padding-right: 1rem;
+    width: 50%;
+  }
+  
+  .contact_form {
+    margin: 0;
+    max-width: 500px;
+    width: 50%;
+  }
+}
+
+@media (min-width: 1440px) {
+}

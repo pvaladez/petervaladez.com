@@ -1,0 +1,34 @@
+@use '../site_variables.scss' as *;
+.about_page {
+  /* background-color: var(--background-color); */
+  /* color: #EBEBEB; */
+  box-sizing: inherit;
+}
+
+.content {
+  max-width: $content-width;
+}
+
+.about_blurb {
+  max-width: 800px;
+  padding: 1.5rem 1.25rem;
+  p {
+    /* color: #EBEBEB; */
+    font-size: 1.4rem;
+  }
+  h2 div p {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .about_blurb {
+    padding: 0;
+  }
+}
+
+@media(min-width: 1440px) {
+  .about_blurb {
+    padding: 0;
+  }
+}
