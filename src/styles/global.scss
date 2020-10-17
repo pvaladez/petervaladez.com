@@ -20,6 +20,7 @@ body {
 a {
   text-decoration: none;
   color: var(--color-secondary);
+  cursor: pointer;
   transition: opacity .2s ease;
 }
 

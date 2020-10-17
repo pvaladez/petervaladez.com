@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'gatsby';
 import styles from '../styles/components/header.module.scss';
 import Logo from './Logo';
 import DarkModeToggle from './DarkModeToggle';
 
 export default function Header(props) {
+  const [menuOpen, toggleMenu] = useState('');
+  const handleMenuClick = () => {
+    let setVal = menuOpen === 'menuOpen' ? '' : 'menuOpen';
+    toggleMenu(setVal);
+  }
+  useEffect(()=>{
+    menuOpen === 'menuOpen' ? 
+      document.body.classList.add('menuOpen') 
+      : document.body.classList.remove('menuOpen');
+  },[menuOpen])
+
   return (
     <header className={styles.header_wrapper}>
       <section className={styles.header_container}>
@@ -17,7 +28,7 @@ export default function Header(props) {
             <Logo className={styles.logo} />
             <h1>{props.title}</h1>
           </Link>
-          <div className={styles.nav_links}>
+          <div className={`${styles.nav_links} ${menuOpen}`}>
             <h1>
               <Link to="/about">About</Link>
             </h1>
@@ -30,6 +41,9 @@ export default function Header(props) {
             <DarkModeToggle />
             {props.children}
           </div>
+          <i className={`${styles.menu_button} ${menuOpen}`} onClick={handleMenuClick}>
+            <span className={styles.menu_icon}></span>
+          </i>
         </nav>
       </section>
     </header>
