@@ -1,3 +1,4 @@
+import "prismjs/themes/prism-tomorrow.css";
 import React from 'react';
 
 import App from './src/components/App.js';

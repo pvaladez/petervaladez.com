@@ -23,6 +23,8 @@ const IndexPage = () => {
   `); */
   const [filter, setFilter] = useState('drop-shadow(2px 4px 6px #0000008f)');
   const handleMouseMove = (event) => {
+    if (window.innerWidth < 768) { return; } /* skip effect for mobile */
+
     let x = Math.round((window.innerWidth / 2 - event.pageX) / 35);
     let y = Math.round((window.innerHeight / 2 - event.pageY + window.pageYOffset - 95) / 35);
     let d = Math.round(Math.hypot(Math.abs(x), Math.abs(y)) / 3);

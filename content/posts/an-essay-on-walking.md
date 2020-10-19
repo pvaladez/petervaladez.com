@@ -7,6 +7,20 @@ hero_image: "/content/images/heather-shevlin-3B_NrzTjajc-unsplash.jpg"
 ---
 Then it is that I appreciate the beauty and the glory of architecture, which itself never turns in, but forever stands out and erect, keeping watch over the slumberers.
 
+```javascript
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [
+        `gatsby-remark-prismjs`,
+      ]
+    }
+  }
+]
+```
+
 No doubt temperament, and, above all, age, have a good deal to do with it. As a man grows older, his ability to sit still and follow indoor occupations increases. He grows vespertinal in his habits as the evening of life approaches, till at last he comes forth only just before sundown, and gets all the walk that he requires in half an hour.
 
 But the walking of which I speak has nothing in it akin to taking exercise, as it is called, as the sick take medicine at stated hours,–as the swinging of dumb-bells or chairs; but is itself the enterprise and adventure of the day. If you would get exercise, go in search of the springs of life. Think of a man’s swinging dumb-bells for his health, when those springs are bubbling up in far-off pastures unsought by him!

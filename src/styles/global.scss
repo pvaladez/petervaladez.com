@@ -34,6 +34,10 @@ ul {
   margin: 0;
 }
 
+*:focus:not(:focus-visible) {
+  outline: none
+}
+
 /* TYPOGRAPHY------------------------------------- */
 
 h1, h2, h3, h4, h5, h6, p {

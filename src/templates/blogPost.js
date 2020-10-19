@@ -30,7 +30,7 @@ export default function Blog({data, pageContext}) {
               {postData.frontmatter.date}
             </time>
             <time dateTime={`PT${postData.timeToRead}M`}>
-              {` · ${postData.timeToRead} min read ⏱️`}
+              {` · ${postData.timeToRead} min read ☕`}
             </time>
           </h4>
         </header>

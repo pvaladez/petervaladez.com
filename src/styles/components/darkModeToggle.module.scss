@@ -7,10 +7,13 @@
   border: 1px solid hsl(0, 0%, 75%);
   border-radius: 50%;
   cursor: pointer;
-  &:focus {
+  /* &:focus {
     outline: none;
     border-color: hsl(0, 0%, 68%);
   }
+  &:focus-visible {
+    outline: auto 1px;
+  } */
 
   svg {
     position: relative;

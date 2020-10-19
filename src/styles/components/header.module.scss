@@ -118,9 +118,11 @@ body:global(.menuOpen) {
 
 	position: relative;
 	/* right: 20px;
-	top: 10px; */
+  top: 10px; */
   z-index: 101;
   
+  background: none;
+  border: 0;
   cursor: pointer;
 
   &:global(.menuOpen) {
@@ -138,11 +140,14 @@ body:global(.menuOpen) {
 				width: 30px;
 			}
 		}
-	}
+  }
+  /* &:focus:not(:focus-visible) {
+    outline: none
+  } */
 }
 
 .menu_icon {
-  background-color: var(--color-secondary);;
+  background-color: var(--color-secondary);
   border-radius: 1px;
   height: 2px;
   width: 22px;
@@ -150,14 +155,15 @@ body:global(.menuOpen) {
   left: 50%;
   top: 50%;
   margin: -1px 0 0 -15px;
-  transition: height 100ms;
   &:after, &:before {
     content: '';
-    background-color: var(--color-secondary);;
-    border-radius: 1px;
+    position: absolute;
+    left: 0;
     height: 2px;
     width: 30px;
-    position: absolute;
+
+    background-color: var(--color-secondary);
+    border-radius: 1px;
     //left: 50%;
     //margin-left: -15px;
     transition: all 200ms;
@@ -206,12 +212,14 @@ body:global(.menuOpen) {
     >h1 {
       font-size: 2rem;
       transform: none;
+      transition: none;
     }
     >button {
       width: 1.75rem;
       height: 1.75rem;
       margin: 0;
       transform: none;
+      transition: none;
 
       svg {
         width: 1em;

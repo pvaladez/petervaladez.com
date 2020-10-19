@@ -41,9 +41,10 @@ export default function Header(props) {
             <DarkModeToggle />
             {props.children}
           </div>
-          <i className={`${styles.menu_button} ${menuOpen}`} onClick={handleMenuClick}>
+          <button className={`${styles.menu_button} ${menuOpen}`} 
+            onClick={handleMenuClick}>
             <span className={styles.menu_icon}></span>
-          </i>
+          </button>
         </nav>
       </section>
     </header>
