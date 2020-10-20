@@ -12,10 +12,16 @@ import arrowRight from '@iconify/icons-codicon/arrow-right';
 export default function Blog({data, pageContext}) {
   const { next, previous } = pageContext;
   const postData = data.markdownRemark;
+  const page = {
+    title: postData.frontmatter.title,
+    description: postData.frontmatter.title,
+    path: postData.fields.slug,
+    image: postData.frontmatter.hero_image.childImageSharp.fluid.src
+  };
   const commentBox = React.createRef();
 
   return (
-    <Layout page="BlogPost" contentClass={styles.content}>
+    <Layout page={page} contentClass={styles.content}>
       <article className={styles.blog}>
         <figure className={styles.blog__hero}>
           <Img
@@ -85,6 +91,9 @@ export const getPostData = graphql`
       }
       html
       timeToRead
+      fields {
+        slug
+      }
     }
   }
 `

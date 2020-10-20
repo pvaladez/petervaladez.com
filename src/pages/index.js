@@ -21,6 +21,11 @@ const IndexPage = () => {
       }
     }
   `); */
+  const page = {
+    title: "Petervaladez.com",
+    description: "Personal site for Peter Valadez built with Gatsby!",
+    path: "/"
+  };
   const [filter, setFilter] = useState('drop-shadow(2px 4px 6px #0000008f)');
   const handleMouseMove = (event) => {
     if (window.innerWidth < 768) { return; } /* skip effect for mobile */
@@ -42,7 +47,7 @@ const IndexPage = () => {
   return (
     <>
       {/* <img className={styles.logo} src={pv_splash_logo} alt="petervaladez.com" /> */}
-      <Layout contentClass={styles.container} hideHeader={true} hideFooter={true} >
+      <Layout page={page} contentClass={styles.container} hideHeader={true} hideFooter={true} >
         <div className={styles.mouseMoveContainer} onMouseMove={handleMouseMove} role="presentation">
           <div className={styles.logo}  style={{ filter: `${filter}` }}>
             {/* <Img  alt="petervaladez.com" fixed={splash_logo.file.childImageSharp.fixed}></Img> */}

@@ -5,8 +5,13 @@ import BlogList from '../components/BlogList';
 import styles from '../styles/pages/blog.module.scss';
 
 export default function Blog() {
+  const page = {
+    title: "Blog List | Petervaladez.com",
+    description: "All blogs on Petervaladez.com",
+    path: "/blog"
+  };
   return (
-      <Layout page="Blog" contentClass={styles.content}>
+      <Layout page={page} contentClass={styles.content} >
         <BlogList />
       </Layout>
   )

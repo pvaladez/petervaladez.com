@@ -1,34 +1,25 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import useSiteMetadata from '../hooks/useSiteMetadata';
+import SEO from './Seo';
+/* import useSiteMetadata from '../hooks/useSiteMetadata'; */
+import Header from './Header';
+import Footer from './Footer';
+import { oneLine } from 'common-tags';
 import '../styles/font.Roboto.css';
 import '../styles/reset.scss';
 import '../styles/global.scss';
 import styles from '../styles/components/layout.module.scss';
-import Header from './Header';
-import Footer from './Footer';
-import { oneLine } from 'common-tags';
 
 export default function Layout(props) {
-  const { title, description } = useSiteMetadata();
+  /* const { title, description } = useSiteMetadata(); */
+
 
   return (
     <>
       {/* Using a shorthand React fragment here so I can put
-            <Helmet/> at the top... Helmet works anywhere, but I
+            <SEO/> at the top... Helmet works anywhere, but I
             like having it here b/c it conveys the idea that the
             contents are going into the <head /> */}
-      <Helmet defer={false}>
-        <html lang="en" />
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          id="dynamicStyles"
-          href="/dynamicStyles.css"
-        />
-      </Helmet>
+      <SEO page={props.page} />
       {/* Used a div for the .layout wrapper because #___gatsby
           and #gatsby-focus-wrapper are div's and adding one
           more div says, ok... the div'itis stops here buddy */}
@@ -36,7 +27,7 @@ export default function Layout(props) {
         className={oneLine`${styles.layout}
           ${props.className ? props.className : ""}`}
       >
-        {!props.hideHeader && <Header page={props.page} title={title} />}
+        {!props.hideHeader && <Header />}
         <main className={styles.main_wrapper}>
           <section
             className={` ${styles.main_container} ${

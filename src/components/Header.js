@@ -26,7 +26,7 @@ export default function Header(props) {
         >
           <Link className={styles.logo} to="/">
             <Logo className={styles.logo} />
-            <h1>{props.title}</h1>
+            <h1>Petervaladez</h1>
           </Link>
           <div className={`${styles.nav_links} ${menuOpen}`}>
             <h1>
