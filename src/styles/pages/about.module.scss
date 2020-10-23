@@ -16,15 +16,36 @@
   }
 }
 
+.cta_box {
+  background: #f5f5f5;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-left: 6px solid #ccc;
+}
+
 .contact_me_list {
   list-style: inside;
 
   li {
     font-size: ms(1);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    >span {
+      position: relative;
+      left: -1rem;
+    }
     a {
-      text-decoration: underline;
+      border-bottom: dashed;
     }
   }
+}
+
+.resume_link {
+  a {
+    border-bottom: 2px dashed;
+  }
+  
 }
 
 .strong {
@@ -45,12 +66,40 @@
   }
   .aside {
     width: 300px;
+    padding-left: 2rem;
+    border-left: 2px solid #d5d5d5;
+
+    .resume_link {
+      margin: 3rem 0;
+
+      svg {
+        vertical-align: text-top;
+      }
+      a:hover {
+        opacity: .6;
+        svg {
+          color: red;
+        }
+      }
+    }
+
+    .social_icon {
+      margin-right: .5rem;
+    }
   }
   .portrait {
     height: 200px;
     width: 200px;
     float: right;
     margin: 0 0 1rem 1rem;
+  }
+  .gears_pic {
+    float: left;
+    margin-right: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    height: 200px;
+    width: 250px;
   }
 }
 

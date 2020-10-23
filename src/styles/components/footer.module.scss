@@ -15,6 +15,13 @@
   padding: $container-pad;
 }
 
+.home_link {
+  svg {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+}
+
 .socialMedia {
   display: flex;
   flex-direction: row;
