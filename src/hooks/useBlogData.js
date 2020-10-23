@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 
 export default function useBlogData() {
+  /* Need to further optimiz images below -- maybe make them fixed GatsbyImageSharpFluid_withWebp/GatsbyImageSharpFixed_withWebp */
   const data = useStaticQuery(graphql`
     query getBlogData {
       allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
@@ -11,10 +12,10 @@ export default function useBlogData() {
               date(formatString: "MMMM Do, YYYY")
               author
               title
-              hero_image {
+              thumb_image {
                 childImageSharp {
-                  fluid( maxWidth: 400, maxHeight: 400 ) {
-                    ...GatsbyImageSharpFluid
+                  fixed( width: 250, height: 250 ) {
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }

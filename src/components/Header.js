@@ -26,18 +26,18 @@ export default function Header(props) {
         >
           <Link className={styles.logo} to="/">
             <Logo className={styles.logo} />
-            <h1>Petervaladez</h1>
+            <h3 className={styles.site_title}>Petervaladez</h3>
           </Link>
           <div className={`${styles.nav_links} ${menuOpen}`}>
-            <h1>
+            <h3 className={styles.nav_link}>
               <Link to="/about">About</Link>
-            </h1>
-            <h1>
+            </h3>
+            <h3 className={styles.nav_link}>
               <Link to="/blog">Blog</Link>
-            </h1>
-            <h1>
+            </h3>
+            <h3 className={styles.nav_link}>
               <Link to="/contact">Contact</Link>
-            </h1>
+            </h3>
             <DarkModeToggle />
             {props.children}
           </div>

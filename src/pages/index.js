@@ -47,16 +47,16 @@ const IndexPage = () => {
   return (
     <>
       {/* <img className={styles.logo} src={pv_splash_logo} alt="petervaladez.com" /> */}
-      <Layout page={page} contentClass={styles.container} hideHeader={true} hideFooter={true} >
+      <Layout page={page} containerClass={styles.container} hideHeader={true} hideFooter={true} >
         <div className={styles.mouseMoveContainer} onMouseMove={handleMouseMove} role="presentation">
           <div className={styles.logo}  style={{ filter: `${filter}` }}>
             {/* <Img  alt="petervaladez.com" fixed={splash_logo.file.childImageSharp.fixed}></Img> */}
             <Logo />
           </div>
-          <nav role="navigation" aria-label="main navigation">
-            <h1><Link to="/about">About</Link></h1>
-            <h1><Link to="/blog">Blog</Link></h1>
-            <h1><Link to="/contact">Contact</Link></h1>
+          <nav className={styles.nav_links} role="navigation" aria-label="main navigation">
+            <h2 className={styles.nav_link}><Link to="/about">About</Link></h2>
+            <h2 className={styles.nav_link}><Link to="/blog">Blog</Link></h2>
+            <h2 className={styles.nav_link}><Link to="/contact">Contact</Link></h2>
           </nav>
           <SocialMediaLinks className={styles.socialMedia} />
           <DarkModeToggle className={styles.dark_toggle}/>

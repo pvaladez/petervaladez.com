@@ -5,7 +5,10 @@ import Header from './Header';
 import Footer from './Footer';
 import { oneLine } from 'common-tags';
 import '../styles/font.Roboto.css';
-import '../styles/reset.scss';
+import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import '../styles/normalize.css';
+/* import '../styles/reset.scss'; */
 import '../styles/global.scss';
 import styles from '../styles/components/layout.module.scss';
 
@@ -31,7 +34,7 @@ export default function Layout(props) {
         <main className={styles.main_wrapper}>
           <section
             className={` ${styles.main_container} ${
-              props.contentClass ? props.contentClass : ""
+              props.containerClass ? props.containerClass : ""
             }`}
           >
             {props.children}

@@ -1,4 +1,10 @@
 @use '../site_variables.scss' as *;
 .content {
-  max-width: $content-width;
+  max-width: $container-width;
+  padding: 1rem 0;
+}
+@media (min-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
 }

@@ -5,30 +5,57 @@
   box-sizing: inherit;
 }
 
-.content {
-  max-width: $content-width;
-}
-
 .about_blurb {
-  max-width: 800px;
-  padding: 1.5rem 1.25rem;
+  max-width: $content-width;
+  /* padding: 1.5rem 1.25rem; */
   p {
-    /* color: #EBEBEB; */
-    font-size: 1.4rem;
+    /* font-size: 1.125rem; */
   }
   h2 div p {
     margin-bottom: 1rem;
   }
 }
 
+.contact_me_list {
+  list-style: inside;
+
+  li {
+    font-size: ms(1);
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.strong {
+  font-size: ms(1);
+}
+
 @media (min-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: $container-width;
+    margin: 0 auto;
+  }
   .about_blurb {
-    padding: 0;
+    flex: 1;
+    padding: 0 2rem 0 0;
+  }
+  .aside {
+    width: 300px;
+  }
+  .portrait {
+    height: 200px;
+    width: 200px;
+    float: right;
+    margin: 0 0 1rem 1rem;
   }
 }
 
 @media(min-width: 1440px) {
   .about_blurb {
-    padding: 0;
+
   }
 }

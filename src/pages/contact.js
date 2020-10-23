@@ -5,11 +5,16 @@ import ContactForm from '../components/ContactForm';
 /* import ThemeProvider from '../components/ThemeProvider'; */
 
 export default function Contact() {
+  const page = {
+    title: "Contact · Petervaladez",
+    description: "Contact Peter on Petervaladez.com",
+    path: "/contact"
+  };
   return (
       <Layout
-        page="contact"
+        page={page}
         className={styles.contact_page}
-        contentClass={styles.content}
+        containerClass={styles.content}
         bgColor="inherit"
       >
         <h1>Say Hello!</h1>

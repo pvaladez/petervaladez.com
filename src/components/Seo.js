@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
@@ -53,5 +54,13 @@ const SEO = ({page}) => {
     </Helmet>
   );
 };
+
+SEO.propTypes = {
+  page: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    path: PropTypes.string,
+  }),
+}
 
 export default SEO;

@@ -6,12 +6,12 @@ import styles from '../styles/pages/blog.module.scss';
 
 export default function Blog() {
   const page = {
-    title: "Blog List | Petervaladez.com",
+    title: "Blog List · Petervaladez",
     description: "All blogs on Petervaladez.com",
     path: "/blog"
   };
   return (
-      <Layout page={page} contentClass={styles.content} >
+      <Layout page={page} containerClass={styles.content} >
         <BlogList />
       </Layout>
   )

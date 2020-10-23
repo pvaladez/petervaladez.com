@@ -13,23 +13,23 @@ export default function BlogList() {
           .filter(blog => blog.node.frontmatter.title !== "")
           .map(blog => {
             return (
-              <Link className={styles.link} to={`/blog/${blog.node.fields.slug}`} key={blog.node.id}>
-                <li className={styles.article} key={blog.node.fields.slug} role="article">
+              <li className={styles.article} role="article" key={blog.node.id}>
+                <Link className={styles.link} to={`/blog/${blog.node.fields.slug}`} key={blog.node.fields.slug}>
                   <div className={styles.list__hero}>
                     <Img 
-                      fluid={
-                        blog.node.frontmatter.hero_image.childImageSharp.fluid
+                      fixed={
+                        blog.node.frontmatter.thumb_image.childImageSharp.fixed
                       }
-                      alt={blog.node.frontmatter.title}
+                      alt={blog.node.frontmatter.title} fadeIn={false} loading="eager"
                     />
                   </div>
                   <div className={styles.list__info}>
-                    <h2>{blog.node.frontmatter.title}</h2>
-                    <h3>{blog.node.frontmatter.date}</h3>
+                    <h3 className={styles.title}>{blog.node.frontmatter.title}</h3>
+                    <h4 className={styles.date}>{blog.node.frontmatter.date}</h4>
                     <p>{blog.node.excerpt}</p>
                   </div>
-                </li>
-              </Link>
+                </Link>
+              </li>
             )
           })}
       </>

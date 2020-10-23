@@ -1,24 +1,22 @@
 .dark_toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   height: 1.75rem;
   width: 1.75rem;
   padding: 0.35rem;
   
-  background: hsl(0, 0%, 91%);
-  border: 1px solid hsl(0, 0%, 75%);
+  background: hsl(0, 0%, 96%);
+  border: 1px solid hsl(0, 0%, 84%);
   border-radius: 50%;
   cursor: pointer;
-  /* &:focus {
-    outline: none;
-    border-color: hsl(0, 0%, 68%);
+  
+  &:hover {
+    border-color: hsl(0, 0%, 53%);
   }
-  &:focus-visible {
-    outline: auto 1px;
-  } */
 
   svg {
-    position: relative;
-    top: -1px;
-    /* left: -1px; */
     color: hsl(0deg 0% 44%);
   }
 }

@@ -1,3 +1,5 @@
+@use './site_variables.scss' as *;
+
 /* Theme--------------------------------------- */
 :root {
   --border: #ededed;
@@ -15,6 +17,11 @@ body {
 
   color:var(--color-text);
   font-size: 16px;
+}
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
 }
 
 a {
@@ -51,31 +58,83 @@ h1, h2 {
   font-weight: 500;
 }
 
+$h1_power: 3;
+
 h1 {
-  font-size: 2rem;
+  font-size: ms($h1_power);
   letter-spacing: -1px;
   line-height: 1.1875;
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: ms($h1_power - 1);
   letter-spacing: -.75px;
   line-height: 1.2;
 }
 
 h3 {
-  font-size: 1.2rem;
+  font-size: ms($h1_power - 2);
   letter-spacing: -.5px;
   line-height: 1.1875;
-  font-weight: normal;
+  /* font-weight: normal; */
+}
+
+h4 {
+  font-size: ms($h1_power - 3);
+  font-weight: 400;
+}
+
+h5 {
+  font-size: ms($h1_power - 4);
+}
+
+h6 {
+  font-size: ms($h1_power - 5);
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: $base + rem;
   letter-spacing: -.5px;
-  line-height: 1.5;
-  color:  var(--color-text);
+  line-height: 1.6;
+  color:  var(--color-text); 
 }
+
+em {
+  font-style: italic;
+}
+
+@media (min-width: 1280px) {
+
+  h1 {
+    /* font-size: 2rem; */
+    letter-spacing: -1px;
+    /* line-height: 1.1875; */
+  }
+  
+  h2 {
+    /* font-size: 1.5rem; */
+    letter-spacing: -.75px;
+    /* line-height: 1.1667; */
+  }
+  
+  h3 {
+    letter-spacing: -.5px;
+    /* line-height: 1.1875; */
+    /* color: #A0A0A0; */
+    /* font-weight: normal; */
+  }
+
+  p {
+    /* line-height: 1.4375; */
+    /* line-height: 1.6; */
+  }
+}
+
+/* Global Modifier Classes ---------------------- */
+.width100 {
+  width: 100%;
+}
+
 
 /* gatsby-image plugin container----------------- */
 
@@ -87,28 +146,100 @@ p {
   filter: var(--color-image_filter);
 }
 
-@media (min-width: 1280px) {
+/* gatsby-remark-prism -------------------- */
+.gatsby-highlight {
+  position: relative;
+  margin-bottom: 1.45rem;
+  border-radius: 0.3em;
+  overflow: auto;
+}
 
-  h1 {
-    font-size: 2rem;
-    letter-spacing: -1px;
-    line-height: 1.1875;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    letter-spacing: -.75px;
-    line-height: 1.1667;
-  }
-  
-  h3 {
-    letter-spacing: -.5px;
-    line-height: 1.1875;
-    /* color: #A0A0A0; */
-    font-weight: normal;
-  }
+.gatsby-highlight-code-line {
+  /* background-color: darken($color-gray, 30%); */
+  display: block;
+  margin-right: -1em !important;
+  margin-left: -1em !important;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  /* border-left: 3px solid map-get($colors, primary); */
+}
 
-  p {
-    line-height: 1.4375;
-  }
+.gatsby-highlight pre[class*='language-'] {
+  margin: 0;
+  overflow: initial;
+  float: left;
+  min-width: 100%;
+  border-top: 5px solid #3084cc;
+}
+
+.gatsby-highlight pre[class*='language-'].line-numbers {
+  padding-left: 2.4em;
+}
+
+.gatsby-highlight .line-numbers-rows {
+  top: 1em;
+  left: .5em !important; /* They added inline styles... yuk, but I had to override:
+  https://github.com/gatsbyjs/gatsby/blob/104f2cc980a019e4d0234d6aad4248341ccfd3ec/packages/gatsby-remark-prismjs/src/add-line-numbers.js#L23 */
+}
+
+.line-numbers-rows > span:before {
+  padding-right: .5rem;
+}
+
+.gatsby-highlight pre[class*="language-"]:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  text-align: right;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 0 0 5px 5px;
+  background: #3084cc;
+}
+
+.gatsby-highlight pre.language-css:before {
+  content: 'css';
+  /* background: map-get($colors, secondary); */
+  /* color: getColor(whitish); */
+  font-weight: 400;
+}
+
+.gatsby-highlight pre.language-js:before {
+  content: 'js';
+  /* background: #ccc; */
+  /* color: rgb(231, 156, 17); */
+  font-weight: 400;
+}
+
+.gatsby-highlight pre.language-javascript:before {
+  content: 'javascript';
+  /* background: map-get($colors, secondary); */
+  /* color: getColor(whitish); */
+  font-weight: 400;
+}
+
+.gatsby-highlight pre.language-bash:before {
+  content: 'bash';
+  /* background: map-get($colors, secondary); */
+  /* color: getColor(whitish); */
+  font-weight: 400;
+}
+
+.gatsby-highlight pre.language-html:before {
+  content: 'html';
+  /* background: map-get($colors, secondary); */
+  /* color: getColor(whitish); */
+  font-weight: 400;
+}
+
+.gatsby-highlight pre.language-json:before {
+  content: 'json';
+  /* background: map-get($colors, secondary); */
+  /* color: getColor(whitish); */
+  font-weight: 400;
 }
