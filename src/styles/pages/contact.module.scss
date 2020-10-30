@@ -4,6 +4,12 @@
 
 }
 
+.contact_blurb {
+  p {
+    line-height: 1.45;
+  }
+}
+
 .contact_form {
   margin: 0 auto;
 
@@ -51,12 +57,6 @@
   color: red;
 }
 
-.submit_row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
 .submit {
   display: inline-block;
 
@@ -83,6 +83,10 @@
   vertical-align: middle;
 }
 
+@media (min-width: 480px) {
+  
+}
+
 @media (min-width: 768px) {
   .content {
     display: flex;
@@ -107,5 +111,10 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
+  .submit_row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 }

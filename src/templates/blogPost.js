@@ -10,8 +10,9 @@ import arrowRight from "@iconify/icons-codicon/arrow-right"
 /* import ThemeProvider from '../components/ThemeProvider'; */
 
 export default function Blog({ data, pageContext }) {
-  const { next, previous } = pageContext
-  const postData = data.markdownRemark
+  /* { next } from graphql is actually the chronologically previous post & vice versa */
+  const { next:prev_post, previous:next_post } = pageContext;
+  const postData = data.markdownRemark;
   const page = {
     title: postData.frontmatter.title + "· Petervaladez",
     description: postData.frontmatter.title,
@@ -48,26 +49,26 @@ export default function Blog({ data, pageContext }) {
         ></section>
         <footer className={styles.blog__footer}>
           <Link
-            to={`/blog/${previous !== null ? previous.fields.slug : ""}`}
+            to={`/blog/${prev_post !== null ? prev_post.fields.slug : ""}`}
             className={styles.footer__prev}
           >
             <Icon icon={arrowLeft} />
             <h4>
-              {previous !== null ? previous.frontmatter.title : "All Blogs"}
+              {prev_post !== null ? prev_post.frontmatter.title : "All Blogs"}
             </h4>
-            <h6>{previous !== null ? previous.frontmatter.date : "🚀"}</h6>
+            <h6>{prev_post !== null ? prev_post.frontmatter.date : "🚀"}</h6>
           </Link>
           {/* I am the only author for now... not needed:
           <h2>
             Written By: {postData.frontmatter.author}
           </h2> */}
           <Link
-            to={`/blog/${next !== null ? next.fields.slug : ""}`}
+            to={`/blog/${next_post !== null ? next_post.fields.slug : ""}`}
             className={styles.footer__next}
           >
             <Icon icon={arrowRight} />
-            <h4>{next !== null ? next.frontmatter.title : "All Blogs"}</h4>
-            <h6>{next !== null ? next.frontmatter.date : "🚀"}</h6>
+            <h4>{next_post !== null ? next_post.frontmatter.title : "All Blogs"}</h4>
+            <h6>{next_post !== null ? next_post.frontmatter.date : "🚀"}</h6>
           </Link>
         </footer>
       </article>

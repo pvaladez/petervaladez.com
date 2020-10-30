@@ -63,13 +63,13 @@ module.exports = {
       options: {
         plugins: [
           "gatsby-remark-normalize-paths",
-          "gatsby-remark-relative-images",
           {
             resolve: "gatsby-remark-images",
             options: {
-              maxWidth: 1000,
+              maxWidth: 800,
               linkImagesToOriginal: false,
-              disableBgImageOnAlpha: true
+              disableBgImageOnAlpha: true,
+              showCaptions: true,
             },
           },
           {

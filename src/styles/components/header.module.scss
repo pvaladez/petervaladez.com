@@ -76,7 +76,7 @@ body:global(.menuOpen) {
     transition-delay: .35s;
   }
 
-  &:before {
+  &::before {
     content: '';
     /* display: none; */
     position: fixed;
@@ -99,7 +99,7 @@ body:global(.menuOpen) {
       transform: translateX(0);
     }
 
-    &:before {
+    &::before {
       /* display: block; */
       left: 0;
       opacity: 1;
@@ -123,14 +123,14 @@ body:global(.menuOpen) {
   &:global(.menuOpen) {
 		.menu_icon {
 			height: 0;
-			&:after, &:before {
+			&::after, &::before {
 				background-color: #757575;
 				top: 1px;
 			}
-			&:after {
+			&::after {
 				transform: rotate(45deg);
 			}
-			&:before {
+			&::before {
 				transform: rotate(-45deg);
 				width: 30px;
 			}
@@ -150,7 +150,7 @@ body:global(.menuOpen) {
   left: 50%;
   top: 50%;
   margin: -1px 0 0 -15px;
-  &:after, &:before {
+  &::after, &::before {
     content: '';
     position: absolute;
     left: 0;
@@ -163,10 +163,10 @@ body:global(.menuOpen) {
     //margin-left: -15px;
     transition: all 200ms;
   }
-  &:after {
+  &::after {
     top: -7px;
   }
-  &:before {
+  &::before {
     bottom: -7px;
     width: 28px;
   }

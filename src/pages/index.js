@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
+import { throttle } from 'lodash';
 import Layout from '../components/Layout';
 import Logo from '../components/Logo';
 import DarkModeToggle from '../components/DarkModeToggle';
@@ -27,6 +28,10 @@ const IndexPage = () => {
     path: "/"
   };
   const [filter, setFilter] = useState('drop-shadow(2px 4px 6px #0000008f)');
+  const throttledSetFilter = React.useCallback(
+    throttle(newFilter => setFilter(newFilter), 20),
+    []
+  );
   const handleMouseMove = (event) => {
     if (window.innerWidth < 768) { return; } /* skip effect for mobile */
 
@@ -41,8 +46,8 @@ const IndexPage = () => {
     y = valueLimit(y, -16, 16);
     d = valueLimit(d, 2, 32);
 
-    setFilter(`drop-shadow(${x}px ${y}px ${d}px #0000008f)`);
-    /*  Todo: setup debounce function and optimize animation performance -- DONE! */
+    throttledSetFilter(`drop-shadow(${x}px ${y}px ${d}px #0000008f)`);
+    /*  Todo: setup throttled function and optimize animation performance -- DONE! */
   }
   return (
     <>

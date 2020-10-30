@@ -9,6 +9,10 @@ const ContactForm = () => {
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&")
   }
+  const firstInputRef = React.useRef(null)
+  React.useEffect(() => {
+    firstInputRef.current.focus();
+  },[firstInputRef])
 
   return (
     <Formik
@@ -58,7 +62,7 @@ const ContactForm = () => {
       {({ setFieldValue }) => (
         <Form name="contact" data-netlify={true} data-netlify-recaptcha={true}>
           <label htmlFor="name">Your Name: </label>
-          <Field name="name" placeholder="WHAT.... is your naaame??? 🌉🧙" />
+          <Field name="name" placeholder="WHAT.... is your naaame??? 🌉🧙" innerRef={firstInputRef} />
           <div className={styles.error}>
             <ErrorMessage name="name" />
           </div>
