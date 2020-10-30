@@ -44,11 +44,11 @@ const IndexPage = () => {
       mousePos.current.x = x;
       mousePos.current.y = y;
       mousePos.current.d = d;
-    },20),
+    },16),
     []
   );
   const throttledSetFilter = React.useCallback(
-    throttle(newFilter => setFilter(newFilter), 20),
+    throttle(newFilter => setFilter(newFilter), 16),
     []
   );
   const handleMouseMove = (event) => {
