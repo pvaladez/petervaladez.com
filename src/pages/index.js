@@ -28,24 +28,36 @@ const IndexPage = () => {
     path: "/"
   };
   const [filter, setFilter] = useState('drop-shadow(2px 4px 6px #0000008f)');
+  const mousePos = React.useRef({x:0, y:0, d:0});
+  const calcMouse = React.useCallback(
+    throttle((pageX, pageY) => {
+      let x = Math.round((window.innerWidth / 2 - pageX) / 35);
+      let y = Math.round((window.innerHeight / 2 - pageY + window.pageYOffset - 95) / 35);
+      let d = Math.round(Math.hypot(Math.abs(x), Math.abs(y)) / 3);
+  
+      function valueLimit(val, min, max) {
+        return val < min ? min : (val > max ? max : val);
+      }
+      x = valueLimit(x, -16, 16);
+      y = valueLimit(y, -16, 16);
+      d = valueLimit(d, 2, 32);
+      mousePos.current.x = x;
+      mousePos.current.y = y;
+      mousePos.current.d = d;
+    },20),
+    []
+  );
   const throttledSetFilter = React.useCallback(
     throttle(newFilter => setFilter(newFilter), 20),
     []
   );
   const handleMouseMove = (event) => {
     if (window.innerWidth < 768) { return; } /* skip effect for mobile */
+    let pageX = event.pageX,
+        pageY = event.pageY;
 
-    let x = Math.round((window.innerWidth / 2 - event.pageX) / 35);
-    let y = Math.round((window.innerHeight / 2 - event.pageY + window.pageYOffset - 95) / 35);
-    let d = Math.round(Math.hypot(Math.abs(x), Math.abs(y)) / 3);
-
-    function valueLimit(val, min, max) {
-      return val < min ? min : (val > max ? max : val);
-    }
-    x = valueLimit(x, -16, 16);
-    y = valueLimit(y, -16, 16);
-    d = valueLimit(d, 2, 32);
-
+    calcMouse(pageX, pageY);
+    let { x, y, d } = mousePos.current;
     throttledSetFilter(`drop-shadow(${x}px ${y}px ${d}px #0000008f)`);
     /*  Todo: setup throttled function and optimize animation performance -- DONE! */
   }
