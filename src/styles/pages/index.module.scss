@@ -32,7 +32,8 @@
   height: 180px;
   margin: 0 auto 32px;
   //filter: drop-shadow(2px 4px 6px #0000008f);
-  /* transition: filter .05s ease; */
+  /* transition: filter .5s ease; */
+  will-change: filter;
   
   img {
     object-fit: contain;

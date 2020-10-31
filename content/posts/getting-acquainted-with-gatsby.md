@@ -52,7 +52,7 @@ If you don't want to make too many customizations, you can just create the start
 ### Making it my Own... with Help
 I will write separate blog posts giving more detail to some of ways I customized the [Brevifolia Gatsby template](https://github.com/kendallstrautman/brevifolia-gatsby-forestry), but here is the shortlist along with some helpful resources I found along the way:
 
-- Separate index/home page with fun animated drop-shadow filter 
+- Separate index/home page with react-spring animated drop-shadow filter 
 - Contact form using Formik and react-google-recaptcha
   - Derek Spaulding: https://www.derekaspaulding.com/blog/simple-contact-form-with-gatsby-formik-and-netlify/
   - Sean C. Davis: https://cobwwweb.com/what-you-need-to-know-about-netlify-forms

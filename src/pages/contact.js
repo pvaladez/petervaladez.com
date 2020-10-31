@@ -21,7 +21,7 @@ export default function Contact() {
 
       <section className={styles.contact_blurb}>
         <p>
-          Whether you are a fellow developer looking to chat, you have feedback
+          Whether you are a fellow developer looking to chat, have feedback
           for this site, or have a project in mind I would love to hear from
           you! The web developer community has taught me a lot over the years,
           and I love that I have been able to find people who are more talented
