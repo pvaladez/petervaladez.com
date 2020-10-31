@@ -41,7 +41,7 @@ const IndexPage = () => {
   }));
 
   return (
-    <>
+    <> 
       <Layout page={page} containerClass={styles.container} hideHeader={true} hideFooter={true} >
         <div className={styles.mouseMoveContainer} 
           onMouseMove={handleMouseMove} 
