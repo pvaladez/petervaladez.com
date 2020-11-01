@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
-import DOMPurify from 'dompurify';
+/* import DOMPurify from 'dompurify'; -- fails netlify build :( */
 import { Icon } from '@iconify/react';
 import arrowLeft from '@iconify/icons-codicon/arrow-left';
 import arrowRight from '@iconify/icons-codicon/arrow-right';
@@ -49,7 +49,7 @@ export const blogPost = ({ data, pageContext }) => {
         <section
           className={styles.blog__body}
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(postData.html) }}
+          dangerouslySetInnerHTML={{ __html: postData.html }}
         />
         <footer className={styles.blog__footer}>
           <Link

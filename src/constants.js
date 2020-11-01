@@ -15,6 +15,10 @@ export const COLORS = {
     light: 'radial-gradient(#ffffff, #b7b7b7)',
     dark: 'radial-gradient(hsl(225deg 9% 56%), hsl(224deg 15% 28%))',
   },
+  bgTransparent: {
+    light: 'hsl(0deg 0% 100% / 85%)',
+    dark: 'hsl(0deg 0% 43% / 85%)',
+  },
   primary: {
     light: 'hsl(340deg, 100%, 40%)', // Pinkish-red
     dark: 'hsl(50deg, 100%, 50%)', // Yellow

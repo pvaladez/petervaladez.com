@@ -3,10 +3,10 @@ import styles from '../styles/templates/blogPost.module.scss';
 import { ThemeContext } from './ThemeProvider';
 
 export default function Comments({ commentBox }) {
-  const { colorMode } = useContext(ThemeContext);
+  // const { colorMode } = useContext(ThemeContext); -- removed to avoid erasing comments :(
 
   useEffect(() => {
-    if (!document.getElementById('utterances') && colorMode !== 'undefined') {
+    if (!document.getElementById('utterances')) {
       const commentScript = document.createElement('script');
       const theme = typeof window !== 'undefined'
         && localStorage.getItem('color-mode') === 'dark'
@@ -21,14 +21,17 @@ export default function Comments({ commentBox }) {
       commentScript.setAttribute('crossorigin', 'anonymous');
       if (commentBox && commentBox.current) {
         // eslint-disable-next-line no-param-reassign
-        commentBox.current.innerHTML = '';
+        // Next statement would redraw commentBox with the colorMode that
+        // visitor changes it to.  However, it would also erase their
+        // comments if they change colorMode in the middle of typing. :(
+        // commentBox.current.innerHTML = '';
         commentBox.current.appendChild(commentScript);
       } else {
         // eslint-disable-next-line no-console
         console.log(`Error adding utterances comments on: ${commentBox}`);
       }
     }
-  }, [colorMode, commentBox]);
+  }, [commentBox]);
 
   return <section ref={commentBox} className={styles.comment_box} />;
 }

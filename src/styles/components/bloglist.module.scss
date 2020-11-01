@@ -13,10 +13,15 @@
   }
 }
 
+.article {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
 .list__hero {
   /* width: 100%; */
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   margin: 0 auto;
   /* height: 33vh; */
   overflow: hidden;
@@ -65,10 +70,6 @@
     margin: 0 auto;
     max-width: $content-width;
   } */
-  .article {
-    display: block;
-    margin-bottom: 1.25rem;
-  }
   .article:hover {
     .list__hero {
       transform: translateY(-0.1875rem) scale(1.02);
@@ -85,10 +86,6 @@
     align-items: center;
     flex-direction: row;
     transition: transform 0.3s ease;
-  }
-  .list__hero {
-    height: 200px;
-    width: 200px;
   }
   .list__info {
     flex: 1;

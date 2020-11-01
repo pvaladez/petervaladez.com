@@ -1,7 +1,7 @@
 ---
 title: My Journey into the Gatsbyverse
 date: '2020-10-20T22:37:31.000Z'
-thumb_image: '/content/images/gatsby_logo.png'
+thumb_image: '/content/images/gatsby-logo.png'
 author: Peter Valadez
 ---
 
@@ -10,9 +10,11 @@ Gatsby! Although I’ve never attempted anything as ambitious as creating a blog
 scratch, that fact hasn’t stopped the occassional feelings of guilt for not getting something up. I
 can relate to this:
 
-<figure class="twitter_embed" style="align-self:center; min-height: 590px;">
+<figure class="twitterEmbed">
+<div class="twitterEmbed__container" style="min-height:506px;">
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Me everytime someone tweets about starting a blog <a href="https://t.co/5ADpE9ec0j">pic.twitter.com/5ADpE9ec0j</a></p>&mdash; Annie 🦄⚡ (@anniebombanie_) <a href="https://twitter.com/anniebombanie_/status/1304087153559965698?ref_src=twsrc%5Etfw">September 10, 2020</a></blockquote> 
-<figcaption>So I actually modified gatsby-plugin-twitter and added some CSS animations to make the embedded tweet load without having content jump around... lol... at least that particular task didn't take toooooo long... </figcaption>
+</div>
+<figcaption>I might have modified gatsby-plugin-twitter and added some CSS animations to make the embedded tweet load without having content jump around... lol... at least that particular task didn't take toooooo long... </figcaption>
 </figure>
 
 ### A Bit of History...
@@ -43,7 +45,7 @@ changed_. Regardless of whether or not caching can be done easily and reliably, 
 a high level of complexity needed under-the-hood to make caching work on Wordpress or any other
 database dependent website.
 
-![https://nodejs.org/en/about/resources/](/content/images/node.js_logo.jpg)
+![https://nodejs.org/en/about/resources/](/content/images/node.js-logo.jpg)
 
 And serving markup quickly is not the only performance concern... there's also the matter of how
 much markup is served and how often it is served. Node.js and Single Page Apps have introduced a
@@ -192,7 +194,7 @@ here is the shortlist along with some helpful resources I found along the way:
 - Plugins:
   - gatsby-remark-prismjs
   - gatsby-plugin-twitter with modifications placed in gatsby-browser.js
-  - domPurify to santize html generated from markdown posts
+  <!--  - domPurify to santize html generated from markdown posts -->
 
 <div class="em-box">
   <p style="margin:0;">

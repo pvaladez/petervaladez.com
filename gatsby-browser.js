@@ -54,7 +54,7 @@ export const onRouteUpdate = () => {
 
     window.twttr.ready((twttr) => {
       twttr.events.bind('rendered', (event) => {
-        event.target.closest('.twitter_embed').classList.add('twitter_rendered');
+        event.target.closest('.twitterEmbed__container').classList.add('twitterEmbed--rendered');
       });
     });
 
@@ -63,7 +63,7 @@ export const onRouteUpdate = () => {
       && window.twttr.widgets
       && typeof window.twttr.widgets.load === 'function'
     ) {
-      window.twttr.widgets.load(document.querySelectorAll('.twitter_embed'));
+      window.twttr.widgets.load(document.querySelectorAll('.twitterEmbed__container'));
     }
   }
 };

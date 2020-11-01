@@ -1,45 +1,34 @@
 @use '../site_variables.scss' as *;
 .about_page {
-  /* background-color: var(--background-color); */
+  /* background-color: var(--background-color); -trigger_deploy */
   /* color: #EBEBEB; */
   box-sizing: inherit;
 }
 
-.about_blurb {
-  max-width: $content-width;
-  /* padding: 1.5rem 1.25rem; */
-  p {
-    /* font-size: 1.125rem; */
-  }
-  h2 div p {
+.aboutBlurb {
+  /* max-width: $content-width; */
+  /*   h2 div p {
     margin-bottom: 1rem;
-  }
+  } */
 }
 
 .cta_box {
-  /* background: #f5f5f5; */
   margin-bottom: 2rem;
-  padding: 2rem;
-  /* border-left: 6px solid #ccc; */
+  padding: 2rem 1rem;
 }
 
 .contact_me_list {
-  list-style: inside;
+  list-style: disc;
   margin-left: 1.75rem;
 
   li {
     font-size: ms(0);
-    text-indent: -1.75rem;
 
     &:last-of-type {
       margin-bottom: 0;
     }
-    > span {
-      position: relative;
-      left: -1rem;
-    }
     a {
-      border-bottom: dashed;
+      border-bottom: solid;
     }
   }
 }
@@ -72,7 +61,15 @@
   font-size: ms(1);
 }
 
+.portfolio {
+  padding-top: 2rem;
+}
+
 @media (min-width: 768px) {
+  .cta_box {
+    padding: 2rem;
+  }
+
   .portrait {
     height: 200px;
     width: 200px;
@@ -109,19 +106,34 @@
 
 @media (min-width: 1024px) {
   .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     max-width: $container-width;
     margin: 0 auto;
   }
-  .about_blurb {
-    flex: 1;
+  .aboutBlurb {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .aboutBlurb__main {
     padding: 0 2rem 0 0;
+    width: calc(100% - 300px);
   }
   .aside {
     width: 300px;
     padding-left: 2rem;
-    border-left: 2px solid var(--color-gray300);
+    border-left: 2px solid var(--color-gray100);
+  }
+  .cta_box {
+    margin-bottom: 0;
+  }
+  .portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 calc(-50vw + 550px);
+
+    > h2 {
+      width: 1068px;
+    }
   }
 }

@@ -1,0 +1,45 @@
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
+import Slider from '@farbenmeer/react-spring-slider';
+import styles from '../styles/components/portfolioSlider.module.scss';
+
+/* const pages = [
+  'https://images.pexels.com/photos/62689/pexels-photo-62689.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/296878/pexels-photo-296878.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/351265/pexels-photo-351265.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/924675/pexels-photo-924675.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+]; */
+
+export default function PortfolioSlider2() {
+  const query = useStaticQuery(graphql`
+  query sliderImages {
+    portraitTwo: file(relativePath: { eq: "portrait.png" }) {
+      childImageSharp {
+        id
+        fluid(maxHeight: 600, maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    gearsTwo: file(relativePath: { eq: "bill-oxford--fGqsewtsJY-unsplash.jpg" }) {
+      childImageSharp {
+        id
+        fluid(maxHeight: 600, maxWidth: 800) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`);
+
+  return (
+    <div className={styles.sliderWrapper}>
+      <Slider>
+        <div><Img fluid={query.gearsTwo.childImageSharp.fluid} /></div>
+        <div><Img fluid={query.gearsTwo.childImageSharp.fluid} /></div>
+        <div><Img fluid={query.gearsTwo.childImageSharp.fluid} /></div>
+      </Slider>
+    </div>
+  );
+}
