@@ -8,9 +8,9 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop -o",
-    "develop": "yarn dev",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "yarn dev",
+    "develop": "gatsby develop -o",
+    "format": "eslint 'src/**/*.{js,jsx}' --fix",
+    "start": "gatsby develop -o",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "forestry-preview": "gatsby develop -p 8080 -H 0.0.0.0",

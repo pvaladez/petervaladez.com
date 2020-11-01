@@ -28,9 +28,13 @@ export const COLORS = {
     dark: 'brightness(0.92)',
   },
   // Grays, scaling from least-noticeable to most-noticeable
+  gray100: {
+    light: 'hsl(0deg 0% 95%)',
+    dark: 'hsl(247deg 10% 25%)',
+  },
   gray300: {
-    light: 'hsl(0deg, 0%, 70%)',
-    dark: 'hsl(0deg, 0%, 30%)',
+    light: 'hsl(0deg, 0%, 80%)',
+    dark: 'hsl(0deg, 0%, 40%)',
   },
   gray500: {
     light: 'hsl(0deg, 0%, 50%)',

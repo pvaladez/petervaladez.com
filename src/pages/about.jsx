@@ -94,7 +94,7 @@ export default function About({ data }) {
           on web development in a professional context, and I’ve found the
           creative process of web development to be very rewarding.
         </p>
-        <div className={styles.cta_box}>
+        <div className={`em-box ${styles.cta_box}`}>
           <h3>Want to know more?</h3>
           <ul className={styles.contact_me_list}>
             <li>
