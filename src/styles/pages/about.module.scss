@@ -34,7 +34,7 @@
     &:last-of-type {
       margin-bottom: 0;
     }
-    >span {
+    > span {
       position: relative;
       left: -1rem;
     }
@@ -62,11 +62,10 @@
   a {
     border-bottom: 2px dashed;
   }
-
 }
 
 .social_icon {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .strong {
@@ -83,14 +82,14 @@
   .gears_pic {
     float: left;
     margin-right: 2rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     margin-bottom: 2rem;
     height: 200px;
     width: 250px;
 
     figcaption {
       font-size: ms(-1);
-      margin-top: .25rem;
+      margin-top: 0.25rem;
     }
   }
   .contact_me_list {
@@ -100,16 +99,15 @@
   }
   .resume_link {
     a:hover {
-      opacity: .6;
+      opacity: 0.6;
       svg {
         color: red;
       }
     }
   }
-
 }
 
-@media(min-width: 1024px) {
+@media (min-width: 1024px) {
   .container {
     display: flex;
     flex-direction: row;
@@ -126,5 +124,4 @@
     padding-left: 2rem;
     border-left: 2px solid #d5d5d5;
   }
-
 }

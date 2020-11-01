@@ -1,20 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styles from '../styles/components/header.module.scss';
 import Logo from './Logo';
 import DarkModeToggle from './DarkModeToggle';
 
-export default function Header(props) {
+export default function Header({ children }) {
   const [menuOpen, toggleMenu] = useState('');
   const handleMenuClick = () => {
-    let setVal = menuOpen === 'menuOpen' ? '' : 'menuOpen';
+    const setVal = menuOpen === 'menuOpen' ? '' : 'menuOpen';
     toggleMenu(setVal);
-  }
-  useEffect(()=>{
-    menuOpen === 'menuOpen' ? 
-      document.body.classList.add('menuOpen') 
+  };
+  useEffect(() => {
+    menuOpen === 'menuOpen'
+      ? document.body.classList.add('menuOpen')
       : document.body.classList.remove('menuOpen');
-  },[menuOpen])
+  }, [menuOpen]);
 
   return (
     <header className={styles.header_wrapper}>
@@ -39,14 +39,17 @@ export default function Header(props) {
               <Link to="/contact">Contact</Link>
             </h3>
             <DarkModeToggle />
-            {props.children}
+            {children}
           </div>
-          <button className={`${styles.menu_button} ${menuOpen}`} 
-            onClick={handleMenuClick}>
-            <span className={styles.menu_icon}></span>
+          <button
+            className={`${styles.menu_button} ${menuOpen}`}
+            onClick={handleMenuClick}
+            type="button"
+          >
+            <span className={styles.menu_icon} />
           </button>
         </nav>
       </section>
     </header>
-  )
+  );
 }

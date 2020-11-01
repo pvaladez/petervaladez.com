@@ -6,7 +6,7 @@ $content-width: 800px;
 
 // Modular Scale functions from Matej Latin
 // 1. Base size and ratio
-$base: 1.25;  // = 20px
+$base: 1.25; // = 20px
 //$base: 1.1875;  // = 19px
 $ratio: 1.333; // Perfect Fourth / 3:4 ratio
 // $ratio: 1.414;
@@ -17,13 +17,12 @@ $ratio: 1.333; // Perfect Fourth / 3:4 ratio
   $value: 1;
   @if $exponent > 0 {
     @for $i from 1 through $exponent {
-      $value: $value * $number;//Multiply by $number if exponent less than zero
+      $value: $value * $number; //Multiply by $number if exponent less than zero
     }
-  } 
-  @else if $exponent < 0 {
-      @for $i from 1 through -$exponent {
-        $value: $value / $number; //Divide by $number if exponent less than zero
-      }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number; //Divide by $number if exponent less than zero
+    }
   }
   @return $value;
 }
@@ -31,5 +30,5 @@ $ratio: 1.333; // Perfect Fourth / 3:4 ratio
       under one roof */
 @function ms($value, $ms-ratio: $ratio, $ms-base: $base) {
   $size: pow($ms-ratio, $value) * $ms-base;
-  @return #{$size + "rem"};
+  @return #{$size + 'rem'};
 }

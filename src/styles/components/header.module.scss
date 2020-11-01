@@ -14,7 +14,7 @@ body:global(.menuOpen) {
 
 .header__nav {
   padding: 1.5rem 1.25rem;
-  border-bottom: 1px solid #EBEBEB;
+  border-bottom: 1px solid #ebebeb;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -37,7 +37,6 @@ body:global(.menuOpen) {
     fill: var(--color-text);
     /* object-fit: contain; */
   }
-
 }
 
 .nav_links {
@@ -48,32 +47,33 @@ body:global(.menuOpen) {
   left: 1rem;
   opacity: 0;
   z-index: 10;
-  
+
   .nav_link {
     font-size: 3rem;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
   }
   button {
     width: 2.5rem;
     height: 2.5rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     svg {
       width: 1.5rem;
       height: 1.5rem;
     }
   }
-  .nav_link,>button {
+  .nav_link,
+  > button {
     transform: translateX(calc(-100% - 1rem));
-    transition: transform .35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
-  >:nth-child(2){
-    transition-delay: .1s;
+  > :nth-child(2) {
+    transition-delay: 0.1s;
   }
-  >:nth-child(3){
-    transition-delay: .25s;
+  > :nth-child(3) {
+    transition-delay: 0.25s;
   }
-  >:nth-child(4){
-    transition-delay: .35s;
+  > :nth-child(4) {
+    transition-delay: 0.35s;
   }
 
   &::before {
@@ -88,14 +88,15 @@ body:global(.menuOpen) {
     z-index: -1;
     background: hsl(0deg 0% 100% / 85%);
     backdrop-filter: blur(8px);
-    transition: opacity .2s ease;
+    transition: opacity 0.2s ease;
     /* transition-delay: 2s; */
   }
 
   &:global(.menuOpen) {
     opacity: 1;
 
-    >.nav_link,>button {
+    > .nav_link,
+    > button {
       transform: translateX(0);
     }
 
@@ -109,32 +110,33 @@ body:global(.menuOpen) {
 
 .menu_button {
   height: 30px;
-	width: 30px;
+  width: 30px;
 
-	position: relative;
-	/* right: 20px;
+  position: relative;
+  /* right: 20px;
   top: 10px; */
   z-index: 101;
-  
+
   background: none;
   border: 0;
   cursor: pointer;
 
   &:global(.menuOpen) {
-		.menu_icon {
-			height: 0;
-			&::after, &::before {
-				background-color: #757575;
-				top: 1px;
-			}
-			&::after {
-				transform: rotate(45deg);
-			}
-			&::before {
-				transform: rotate(-45deg);
-				width: 30px;
-			}
-		}
+    .menu_icon {
+      height: 0;
+      &::after,
+      &::before {
+        background-color: #757575;
+        top: 1px;
+      }
+      &::after {
+        transform: rotate(45deg);
+      }
+      &::before {
+        transform: rotate(-45deg);
+        width: 30px;
+      }
+    }
   }
   /* &:focus:not(:focus-visible) {
     outline: none
@@ -150,7 +152,8 @@ body:global(.menuOpen) {
   left: 50%;
   top: 50%;
   margin: -1px 0 0 -15px;
-  &::after, &::before {
+  &::after,
+  &::before {
     content: '';
     position: absolute;
     left: 0;
@@ -178,14 +181,14 @@ body:global(.menuOpen) {
     max-width: $container-width;
     padding: $container-pad;
   }
-  
+
   .header__nav {
     align-items: center;
     flex-direction: row;
     height: 100%;
     padding: 1.5rem 0;
-    
-    /* border-right: 1px solid #EBEBEB; */ 
+
+    /* border-right: 1px solid #EBEBEB; */
     border-bottom: none;
 
     img {
@@ -206,12 +209,12 @@ body:global(.menuOpen) {
 
     .nav_link {
       margin-bottom: 0;
-      margin-right: .8rem;
+      margin-right: 0.8rem;
       font-size: ms(1);
       transform: none;
       transition: none;
     }
-    >button {
+    > button {
       width: 1.75rem;
       height: 1.75rem;
       margin: 0;

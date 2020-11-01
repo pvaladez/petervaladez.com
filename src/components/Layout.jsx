@@ -1,12 +1,12 @@
 import React from 'react';
+import { oneLine } from 'common-tags';
 import SEO from './Seo';
 /* import useSiteMetadata from '../hooks/useSiteMetadata'; */
 import Header from './Header';
 import Footer from './Footer';
-import { oneLine } from 'common-tags';
 import '../styles/font.Roboto.css';
-import "prismjs/themes/prism-tomorrow.css";
-import "prismjs/plugins/line-numbers/prism-line-numbers.css";
+import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 import '../styles/normalize.css';
 /* import '../styles/reset.scss'; */
 import '../styles/global.scss';
@@ -14,7 +14,9 @@ import styles from '../styles/components/layout.module.scss';
 
 export default function Layout(props) {
   /* const { title, description } = useSiteMetadata(); */
-
+  const {
+    page, className, containerClass, hideHeader, hideFooter, children,
+  } = props;
 
   return (
     <>
@@ -22,26 +24,26 @@ export default function Layout(props) {
             <SEO/> at the top... Helmet works anywhere, but I
             like having it here b/c it conveys the idea that the
             contents are going into the <head /> */}
-      <SEO page={props.page} />
+      <SEO page={page} />
       {/* Used a div for the .layout wrapper because #___gatsby
           and #gatsby-focus-wrapper are div's and adding one
           more div says, ok... the div'itis stops here buddy */}
       <div
         className={oneLine`${styles.layout}
-          ${props.className ? props.className : ""}`}
+          ${className || ''}`}
       >
-        {!props.hideHeader && <Header />}
+        {!hideHeader && <Header />}
         <main className={styles.main_wrapper}>
           <section
             className={` ${styles.main_container} ${
-              props.containerClass ? props.containerClass : ""
+              containerClass || ''
             }`}
           >
-            {props.children}
+            {children}
           </section>
         </main>
-        {!props.hideFooter && <Footer />}
+        {!hideFooter && <Footer />}
       </div>
     </>
-  )
+  );
 }

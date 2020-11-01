@@ -1,25 +1,26 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Img from "gatsby-image"
-import Layout from "../components/Layout"
-import Comments from "../components/Comments"
-import styles from "../styles/templates/blogPost.module.scss"
-import { Icon } from "@iconify/react"
-import arrowLeft from "@iconify/icons-codicon/arrow-left"
-import arrowRight from "@iconify/icons-codicon/arrow-right"
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import DOMPurify from 'dompurify';
+import { Icon } from '@iconify/react';
+import arrowLeft from '@iconify/icons-codicon/arrow-left';
+import arrowRight from '@iconify/icons-codicon/arrow-right';
+import Layout from '../components/Layout';
+import Comments from '../components/Comments';
+import styles from '../styles/templates/blogPost.module.scss';
 /* import ThemeProvider from '../components/ThemeProvider'; */
 
-export default function Blog({ data, pageContext }) {
+export const blogPost = ({ data, pageContext }) => {
   /* { next } from graphql is actually the chronologically previous post & vice versa */
-  const { next:prev_post, previous:next_post } = pageContext;
+  const { next: prevPost, previous: nextPost } = pageContext;
   const postData = data.markdownRemark;
   const page = {
-    title: postData.frontmatter.title + "· Petervaladez",
+    title: `${postData.frontmatter.title}· Petervaladez`,
     description: postData.frontmatter.title,
     path: postData.fields.slug,
     image: postData.frontmatter.thumb_image.childImageSharp.fixed.src,
-  }
-  const commentBox = React.createRef()
+  };
+  const commentBox = React.createRef();
 
   return (
     <Layout page={page} containerClass={styles.content}>
@@ -28,7 +29,9 @@ export default function Blog({ data, pageContext }) {
           <figure className={styles.blog__thumb}>
             <Img
               fixed={postData.frontmatter.thumb_image.childImageSharp.fixed}
-              alt={postData.frontmatter.title} fadeIn={false} loading="eager"
+              alt={postData.frontmatter.title}
+              fadeIn={false}
+              loading="eager"
             />
           </figure>
           <div className={styles.blog__info}>
@@ -45,30 +48,33 @@ export default function Blog({ data, pageContext }) {
         </header>
         <section
           className={styles.blog__body}
-          dangerouslySetInnerHTML={{ __html: postData.html }}
-        ></section>
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(postData.html) }}
+        />
         <footer className={styles.blog__footer}>
           <Link
-            to={`/blog/${prev_post !== null ? prev_post.fields.slug : ""}`}
+            to={`/blog/${prevPost !== null ? prevPost.fields.slug : ''}`}
             className={styles.footer__prev}
           >
             <Icon icon={arrowLeft} />
             <h4>
-              {prev_post !== null ? prev_post.frontmatter.title : "All Blogs"}
+              {prevPost !== null ? prevPost.frontmatter.title : 'All Blogs'}
             </h4>
-            <h6>{prev_post !== null ? prev_post.frontmatter.date : "🚀"}</h6>
+            <h5>{prevPost !== null ? prevPost.frontmatter.date : '🚀'}</h5>
           </Link>
           {/* I am the only author for now... not needed:
           <h2>
             Written By: {postData.frontmatter.author}
           </h2> */}
           <Link
-            to={`/blog/${next_post !== null ? next_post.fields.slug : ""}`}
+            to={`/blog/${nextPost !== null ? nextPost.fields.slug : ''}`}
             className={styles.footer__next}
           >
             <Icon icon={arrowRight} />
-            <h4>{next_post !== null ? next_post.frontmatter.title : "All Blogs"}</h4>
-            <h6>{next_post !== null ? next_post.frontmatter.date : "🚀"}</h6>
+            <h4>
+              {nextPost !== null ? nextPost.frontmatter.title : 'All Blogs'}
+            </h4>
+            <h5>{nextPost !== null ? nextPost.frontmatter.date : '🚀'}</h5>
           </Link>
         </footer>
       </article>
@@ -77,11 +83,13 @@ export default function Blog({ data, pageContext }) {
         <Comments commentBox={commentBox} />
       </section>
     </Layout>
-  )
-}
+  );
+};
 
-//dynamic page query, must occur within each post context
-//$slug is made available by context from createPages call in gatsby-node.js
+export default blogPost;
+
+// dynamic page query, must occur within each post context
+// $slug is made available by context from createPages call in gatsby-node.js
 export const getPostData = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -92,7 +100,7 @@ export const getPostData = graphql`
         isoDate: date(formatString: "YYYY-MM-DD")
         thumb_image {
           childImageSharp {
-            fixed(width: 150, height:150) {
+            fixed(width: 150, height: 150) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -105,4 +113,4 @@ export const getPostData = graphql`
       }
     }
   }
-`
+`;

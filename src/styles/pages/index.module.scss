@@ -1,4 +1,3 @@
-
 .container {
   position: relative;
   max-width: none;
@@ -34,7 +33,7 @@
   //filter: drop-shadow(2px 4px 6px #0000008f);
   /* transition: filter .5s ease; */
   will-change: filter;
-  
+
   img {
     object-fit: contain;
   }
@@ -68,7 +67,6 @@
     justify-content: center;
   }
   .nav_link {
-    
     font-weight: 500;
     margin-bottom: 60px;
 
@@ -83,6 +81,4 @@
       padding: 0 26px;
     }
   }
-
-  
 }

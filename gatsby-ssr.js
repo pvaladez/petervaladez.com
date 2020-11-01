@@ -2,14 +2,13 @@
 import React from 'react';
 /* import Terser from 'terser'; */
 /* import { minify } from "terser"; */
-import App from './src/components/App.js';
+import App from './src/components/App';
 
 import {
   COLOR_MODE_KEY,
   COLORS,
   INITIAL_COLOR_MODE_CSS_PROP,
 } from './src/constants';
-
 
 function setColorsByTheme() {
   const colors = '🌈';
@@ -30,7 +29,7 @@ function setColorsByTheme() {
     colorMode = prefersDarkFromMQ ? 'dark' : 'light';
   }
 
-  let root = document.documentElement;
+  const root = document.documentElement;
 
   root.style.setProperty(colorModeCssProp, colorMode);
 
@@ -47,9 +46,9 @@ const InitializeThemeScript = () => {
     .replace('🔑', COLOR_MODE_KEY)
     .replace('⚡️', INITIAL_COLOR_MODE_CSS_PROP);
 
-  let calledFunction = `(${boundFn})()`;
+  const calledFunction = `(${boundFn})()`;
 
-	/* calledFunction = Terser.minify(calledFunction).code; */
+  /* calledFunction = Terser.minify(calledFunction).code; */
 
   // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: calledFunction }} />;
@@ -71,10 +70,8 @@ const FallbackStyles = () => {
   */
 
   const cssVariableString = Object.entries(COLORS).reduce(
-    (acc, [name, colorByTheme]) => {
-      return `${acc}\n--color-${name}: ${colorByTheme.light};`;
-    },
-    ''
+    (acc, [name, colorByTheme]) => `${acc}\n--color-${name}: ${colorByTheme.light};`,
+    '',
   );
 
   const wrappedInSelector = `html { ${cssVariableString} }`;
@@ -87,10 +84,7 @@ export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
   setPreBodyComponents(<InitializeThemeScript />);
 };
 
-export const wrapPageElement = ({ element }) => {
-  return <App>{element}</App>;
-};
-
+export const wrapPageElement = ({ element }) => <App>{element}</App>;
 
 /* From https://divyanshu013.dev/blog/gatsby-dark-mode/ */
 /* import { createElement } from 'react';
@@ -100,18 +94,18 @@ const applyDarkThemeClass = `
   try {
     var theme = localStorage.getItem('theme');
     if (theme === 'dark') {
-			document.body.classList.add('dark-theme');
-		}
+      document.body.classList.add('dark-theme');
+    }
   } catch (e) {}
 })();
 `;
 
 export const onRenderBody = ({ setPreBodyComponents }) => {
-	const script = createElement('script', {
-		dangerouslySetInnerHTML: {
-			__html: applyDarkThemeClass,
-		},
-	});
-	setPreBodyComponents([script]);
+  const script = createElement('script', {
+    dangerouslySetInnerHTML: {
+      __html: applyDarkThemeClass,
+    },
+  });
+  setPreBodyComponents([script]);
 };
  */

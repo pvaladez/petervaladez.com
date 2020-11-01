@@ -1,24 +1,25 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image"
-import { Icon } from "@iconify/react"
-import filePdfFilled from "@iconify/icons-ant-design/file-pdf-filled"
-import githubIcon from "@iconify/icons-ant-design/github-filled"
-import linkedinIcon from "@iconify/icons-cib/linkedin"
-import stackoverflowIcon from "@iconify/icons-cib/stackoverflow"
-import twitterIcon from "@iconify/icons-ant-design/twitter-circle-filled"
-import devToIcon from "@iconify/icons-bx/bxl-dev-to"
-import Layout from "../components/Layout"
-import styles from "../styles/pages/about.module.scss"
-import useSiteMetaData from "../hooks/useSiteMetadata"
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import DOMPurify from 'dompurify';
+import { Icon } from '@iconify/react';
+import filePdfFilled from '@iconify/icons-ant-design/file-pdf-filled';
+import githubIcon from '@iconify/icons-ant-design/github-filled';
+import linkedinIcon from '@iconify/icons-cib/linkedin';
+import stackoverflowIcon from '@iconify/icons-cib/stackoverflow';
+import twitterIcon from '@iconify/icons-ant-design/twitter-circle-filled';
+import devToIcon from '@iconify/icons-bx/bxl-dev-to';
+import Layout from '../components/Layout';
+import styles from '../styles/pages/about.module.scss';
+import useSiteMetaData from '../hooks/useSiteMetadata';
 
 export default function About({ data }) {
-  const { infoData } = useSiteMetaData()
+  const { infoData } = useSiteMetaData();
   const page = {
-    title: "About · Petervaladez",
-    description: "Personal site for Peter Valadez built with Gatsby!",
-    path: "/about",
-  }
+    title: 'About · Petervaladez',
+    description: 'Personal site for Peter Valadez built with Gatsby!',
+    path: '/about',
+  };
 
   return (
     <Layout
@@ -38,17 +39,19 @@ export default function About({ data }) {
         <p>
           I love that web development offers the opportunity to see tangible
           results from my efforts. It also offers the potential to positively
-          impact billions of people just by being part of the internet.{" "}
+          impact billions of people just by being part of the internet.
+          {' '}
           <em>Awesome!</em>
         </p>
         <p>
-          <strong className={styles.strong}>As a front-end developer</strong>, I
-          am focused on using modern tooling to create performant, maintainable, and
-          accessible web experiences with HTML and Javascript. Those experiences
-          become beautiful with the shine of carefully crafted CSS and the
-          aesthetic of modern design principles. Although my current focus is on
-          frontend development, I do believe there is value in understanding the
-          whole stack.
+          <strong className={styles.strong}>As a front-end developer</strong>
+          , I
+          am focused on using modern tooling to create performant, maintainable,
+          and accessible web experiences with HTML and Javascript. Those
+          experiences become beautiful with the shine of carefully crafted CSS
+          and the aesthetic of modern design principles. Although my current
+          focus is on frontend development, I do believe there is value in
+          understanding the whole stack.
         </p>
         <figure className={styles.gears_pic}>
           <Img
@@ -58,11 +61,14 @@ export default function About({ data }) {
           />
           <figcaption>
             <span>
-              Photo by{" "}
+              Photo by
+              {' '}
               <a href="https://unsplash.com/@bill_oxford?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
                 Bill Oxford
-              </a>{" "}
-              on{" "}
+              </a>
+              {' '}
+              on
+              {' '}
               <a href="https://unsplash.com/s/photos/internet-connection?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
                 Unsplash
               </a>
@@ -73,12 +79,14 @@ export default function About({ data }) {
         <p className={styles.ops_para}>
           While working as a support technician in the hosting industry my first
           role was to keep other people’s web projects running and available
-          online.{" "}
+          online.
+          {' '}
           {/* It was a valuable experience, because I got to experience
           everything behind-the-scenes that makes the internet what it is. When
           most people pull up a website or use an internet-powered service they
           don’t realize all the moving pieces that go into making the magic
-          happen on their screen. */}{" "}
+          happen on their screen. */}
+          {' '}
           In supporting a wide variety of technologies at the data center, I
           have cultivated a fine appreciation for all the hard work that goes
           into delivering web services across thousands of miles in a matter of
@@ -108,9 +116,10 @@ export default function About({ data }) {
               <span>
                 Check out my social media accounts
                 <span aria-label="to the right" role="img">
-                  {" "}
+                  {' '}
                   👉
-                </span>{" "}
+                </span>
+                {' '}
                 or
                 <span aria-label="in the footer" role="img">
                   👇
@@ -126,14 +135,22 @@ export default function About({ data }) {
         {/* <h2>Interests</h2>
         <h2>Something Else</h2> */}
         <h2>About this site</h2>
-        <div dangerouslySetInnerHTML={{ __html: infoData.description }}></div>
-        <div dangerouslySetInnerHTML={{ __html: infoData.cta }}></div>
+        <div
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(infoData.description) }}
+        />
+        <div
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(infoData.cta) }}
+        />
       </section>
       <aside className={styles.aside}>
         <h2>tl;dr:</h2>
         <h3 className={styles.resume_link}>
           <a href="/PeterValadez_resume.pdf">
-            <Icon icon={filePdfFilled} /> Resume
+            <Icon icon={filePdfFilled} />
+            {' '}
+            Resume
           </a>
         </h3>
         <h3>Social Media:</h3>
@@ -146,7 +163,9 @@ export default function About({ data }) {
                   aria-hidden="true"
                   className={`${styles.social_icon} github_icon`}
                 />
-                Github: {infoData.contact.github.handle}
+                Github:
+                {' '}
+                {infoData.contact.github.handle}
               </a>
             </p>
           </li>
@@ -194,14 +213,15 @@ export default function About({ data }) {
                   aria-hidden="true"
                   className={`${styles.social_icon} devto_icon`}
                 />
-                Twitter: @{infoData.contact.twitter.handle}
+                Twitter: @
+                {infoData.contact.twitter.handle}
               </a>
             </p>
           </li>
         </ul>
       </aside>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -223,4 +243,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

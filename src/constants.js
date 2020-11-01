@@ -9,7 +9,7 @@ export const COLORS = {
   },
   background_gradient: {
     light: 'radial-gradient(#ffffff, #b7b7b7)',
-    dark: 'radial-gradient(#d0d0d0, #6b6b6b)', 
+    dark: 'radial-gradient(#d0d0d0, #6b6b6b)',
   },
   primary: {
     light: 'hsl(340deg, 100%, 40%)', // Pinkish-red

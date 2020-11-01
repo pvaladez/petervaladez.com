@@ -1,8 +1,8 @@
 /* @import '../reset.scss'; */
 /* @import '../global.scss'; */
-/* @import '../site_variables.scss'; -- @import is being deprecated by Sass */  
+/* @import '../site_variables.scss'; -- @import is being deprecated by Sass */
 /* @use '../reset.scss'; */
-/* @use '../global.scss'; */  /* Don't do this!  It triggers CSS Modules for classes in global.scss */
+/* @use '../global.scss'; */ /* Don't do this!  It triggers CSS Modules for classes in global.scss */
 @use '../site_variables.scss' as *;
 
 :global(.dark-theme) .layout {
@@ -15,7 +15,7 @@
   min-height: 100vh;
 
   background: var(--color-background);
-  transition: background-color .2s ease;
+  transition: background-color 0.2s ease;
 
   &.info_page {
     /* color: #EBEBEB; */

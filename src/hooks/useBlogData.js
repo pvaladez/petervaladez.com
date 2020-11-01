@@ -1,7 +1,8 @@
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from 'gatsby';
 
 export default function useBlogData() {
-  /* Need to further optimiz images below -- maybe make them fixed GatsbyImageSharpFluid_withWebp/GatsbyImageSharpFixed_withWebp */
+  /* Need to further optimiz images below -- maybe make them fixed
+     GatsbyImageSharpFluid_withWebp/GatsbyImageSharpFixed_withWebp */
   const data = useStaticQuery(graphql`
     query getBlogData {
       allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
@@ -14,7 +15,7 @@ export default function useBlogData() {
               title
               thumb_image {
                 childImageSharp {
-                  fixed( width: 250, height: 250 ) {
+                  fixed(width: 250, height: 250) {
                     ...GatsbyImageSharpFixed
                   }
                 }
@@ -28,6 +29,6 @@ export default function useBlogData() {
         }
       }
     }
-  `)
-  return data.allMarkdownRemark.edges
+  `);
+  return data.allMarkdownRemark.edges;
 }

@@ -6,19 +6,19 @@ import {
   INITIAL_COLOR_MODE_CSS_PROP,
 } from '../constants';
 
-
 export const ThemeContext = React.createContext();
 
-export const ThemeProvider = ({ children }) => {
+export default function ThemeProvider({ children }) {
   const [colorMode, rawSetColorMode] = useState(undefined);
 
-	useEffect(() => {
+  useEffect(() => {
     const root = window.document.documentElement;
-    const initialColorValue =
-      root.style.getPropertyValue(INITIAL_COLOR_MODE_CSS_PROP);
+    const initialColorValue = root.style.getPropertyValue(
+      INITIAL_COLOR_MODE_CSS_PROP,
+    );
     rawSetColorMode(initialColorValue);
   }, []);
-  
+
   const contextValue = useMemo(() => {
     function setColorMode(newValue) {
       const root = window.document.documentElement;
@@ -40,15 +40,13 @@ export const ThemeProvider = ({ children }) => {
     };
   }, [colorMode, rawSetColorMode]);
 
-	return (
-		<ThemeContext.Provider value={contextValue}>
+  return (
+    <ThemeContext.Provider value={contextValue}>
       {children}
-		</ThemeContext.Provider>
-	);
-};
+    </ThemeContext.Provider>
+  );
+}
 
 ThemeProvider.propTypes = {
-	children: node.isRequired,
+  children: node.isRequired,
 };
-
-export default ThemeProvider;

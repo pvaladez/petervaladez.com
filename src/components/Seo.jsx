@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-const SEO = ({page}) => {
+export default function SEO({ page }) {
   const data = useStaticQuery(graphql`
     {
       site {
@@ -23,6 +23,7 @@ const SEO = ({page}) => {
   }
 
   if (defaults.baseUrl === '') {
+    // eslint-disable-next-line no-console
     console.error('Please set a baseUrl in your site metadata!');
     return null;
   }
@@ -53,14 +54,12 @@ const SEO = ({page}) => {
       {image && <meta name="twitter:image" content={image} />}
     </Helmet>
   );
-};
+}
 
 SEO.propTypes = {
   page: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     path: PropTypes.string,
-  }),
-}
-
-export default SEO;
+  }).isRequired,
+};

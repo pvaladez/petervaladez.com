@@ -1,70 +1,70 @@
-const config = require("./config.json")
-const infoData = require("./content/data/info.json")
+const config = require('./config.json');
+const infoData = require('./content/data/info.json');
 
 module.exports = {
-  //this makes the site config available to forestry cms
+  // this makes the site config available to forestry cms
   siteMetadata: {
     title: config.title,
     description: config.description,
-    baseUrl: "",
+    baseUrl: '',
     repoUrl: config.repository_url,
     about: config.about,
     contact: config.contact,
     primaryColor: config.primary_color,
-    infoData: infoData
+    infoData,
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-sass`,
+      resolve: 'gatsby-plugin-sass',
       options: {
-        implementation: require("sass"),
+        implementation: require('sass'),
       },
     },
-    "gatsby-transformer-remark",
-    "gatsby-plugin-react-helmet",
-    "gatsby-transformer-yaml",
+    'gatsby-transformer-remark',
+    'gatsby-plugin-react-helmet',
+    'gatsby-transformer-yaml',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "src",
+        name: 'src',
         path: `${__dirname}/src/`,
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "posts",
-        path: `${__dirname}/content/posts`
-      }
+        name: 'posts',
+        path: `${__dirname}/content/posts`,
+      },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "data",
+        name: 'data',
         path: `${__dirname}/content/data`,
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "images",
+        name: 'images',
         path: `${__dirname}/content/images`,
       },
     },
     {
-      resolve: "gatsby-plugin-sharp", 
+      resolve: 'gatsby-plugin-sharp',
       options: {
-        defaultQuality: 75
-      }
+        defaultQuality: 75,
+      },
     },
-    `gatsby-transformer-sharp`,
+    'gatsby-transformer-sharp',
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          "gatsby-remark-normalize-paths",
+          'gatsby-remark-normalize-paths',
           {
-            resolve: "gatsby-remark-images",
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
               linkImagesToOriginal: false,
@@ -72,8 +72,9 @@ module.exports = {
               showCaptions: true,
             },
           },
+          'gatsby-remark-autolink-headers',
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: 'gatsby-remark-prismjs',
             options: {
               // Class prefix for <pre> tags containing syntax highlighting;
               // defaults to 'language-' (e.g. <pre class="language-js">).
@@ -82,7 +83,7 @@ module.exports = {
               // you may use this to prevent Prism from re-processing syntax.
               // This is an uncommon use-case though;
               // If you're unsure, it's best to use the default value.
-              classPrefix: "language-",
+              classPrefix: 'language-',
               // This is used to allow setting a language for inline code
               // (i.e. single backticks) by creating a separator.
               // This separator is a string and will do no white-space
@@ -112,8 +113,8 @@ module.exports = {
               // existing language" below.
               languageExtensions: [
                 {
-                  language: "superscript",
-                  extend: "javascript",
+                  language: 'superscript',
+                  extend: 'javascript',
                   definition: {
                     superscript_types: /(SuperType)/,
                   },
@@ -127,8 +128,8 @@ module.exports = {
               // Customize the prompt used in shell output
               // Values below are default
               prompt: {
-                user: "root",
-                host: "localhost",
+                user: 'root',
+                host: 'localhost',
                 global: false,
               },
               // By default the HTML entities <>&'" are escaped.
@@ -141,4 +142,4 @@ module.exports = {
       },
     },
   ],
-}
+};
