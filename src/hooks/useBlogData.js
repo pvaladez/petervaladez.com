@@ -15,7 +15,7 @@ export default function useBlogData() {
               title
               thumb_image {
                 childImageSharp {
-                  fixed(width: 250, height: 250) {
+                  fixed(width: 200, height: 200) {
                     ...GatsbyImageSharpFixed
                   }
                 }

@@ -628,7 +628,7 @@ code {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
-pre code {
+/* pre code {
   background: none;
   line-height: 1.42;
 }
@@ -644,4 +644,4 @@ pre code:after,
 pre tt:before,
 pre tt:after {
   content: '';
-}
+} */

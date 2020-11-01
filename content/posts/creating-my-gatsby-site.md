@@ -1,18 +1,12 @@
 ---
-title: Creating my Personal Gatsby Site
+title: Modifying the Gatsby Twitter Plugin
 date: '2020-10-21T22:37:31.000Z'
-thumb_image: "/content/images/gatsby_logo.png"
+thumb_image: '/content/images/bill-oxford--fGqsewtsJY-unsplash.jpg'
 author: Peter Valadez
 ---
 
-### Gatsby Community
-Lerpa derpa skemy doda day!
+### gatsby-plugin-twitter
 
-### What's Next?
-Who the fuck even knows???
-
-
-<!--
 ```scss{numberLines: true}
 .twitter_embed {
   position: relative;
@@ -29,7 +23,7 @@ Who the fuck even knows???
     background: hsl(0, 0%, 99%);
     border-radius: 15px;
     border: 1px solid hsl(0, 0%, 92%);
-    animation: twitter_timeout .3s cubic-bezier(1,.01,.41,1) 8s forwards;
+    animation: twitter_timeout 0.3s cubic-bezier(1, 0.01, 0.41, 1) 8s forwards;
   }
   &::after {
     content: '';
@@ -42,32 +36,29 @@ Who the fuck even knows???
     z-index: 2;
     background: hsl(0, 0%, 90%);
     border-radius: 4px;
-    animation: twitter_loading_bar .6s cubic-bezier(1,.01,.41,1) forwards,
-               twitter_timeout .3s cubic-bezier(1,.01,.41,1) 8s forwards;
+    animation: twitter_loading_bar 0.6s cubic-bezier(1, 0.01, 0.41, 1) forwards, twitter_timeout
+        0.3s cubic-bezier(1, 0.01, 0.41, 1) 8s forwards;
   }
   &.twitter_rendered::before {
-    animation: twitter_rendered .3s cubic-bezier(1,.01,.41,1) forwards;
+    animation: twitter_rendered 0.3s cubic-bezier(1, 0.01, 0.41, 1) forwards;
   }
   &.twitter_rendered::after {
     display: none;
   }
-  
-  >div:first-child {
+
+  > div:first-child {
     margin: 0 auto !important;
-    
-    >iframe {
+
+    > iframe {
       margin: 0 !important;
     }
   }
   blockquote {
     margin-top: 1rem;
   }
-  >figcaption {
-    margin-top: .5rem;
+  > figcaption {
+    margin-top: 0.5rem;
     font-size: ms(-1);
   }
 }
 ```
--->
-
-<!-- <img src="http://localhost:8000/gatsby_logo.svg"  style="margin-left: calc(-50vw + 400px);margin-right: calc(-50vw + 400px); max-width: none"/> -->

@@ -12,7 +12,7 @@ can relate to this:
 
 <figure class="twitter_embed" style="align-self:center; min-height: 590px;">
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Me everytime someone tweets about starting a blog <a href="https://t.co/5ADpE9ec0j">pic.twitter.com/5ADpE9ec0j</a></p>&mdash; Annie 🦄⚡ (@anniebombanie_) <a href="https://twitter.com/anniebombanie_/status/1304087153559965698?ref_src=twsrc%5Etfw">September 10, 2020</a></blockquote> 
-<figcaption>One example of my version of this is the fact that I modified gatsby-plugin-twitter and added some CSS animations to make the embedded tweet load without having content jump around... lol... at least that particular task didn't take toooooo long... </figcaption>
+<figcaption>So I actually modified gatsby-plugin-twitter and added some CSS animations to make the embedded tweet load without having content jump around... lol... at least that particular task didn't take toooooo long... </figcaption>
 </figure>
 
 ### A Bit of History...
@@ -68,17 +68,46 @@ configure and maintain a nodeJS webserver felt like a bit more than I wanted to 
 step was to start looking at the various static site generators that were available. From the start
 I liked Gatsby because it used Node.js.
 
+#### **_I would later learn of these other reasons why Gatsby is great:_**
+
+- Image Optimization with gatsby-image
+  - Scale down & crop with graphql
+  - Lazy load and automatic blur-up technique for faster loading
+  - Automatically creates responsive image sets
+  - All above available for markdown images w/ gatsby-remark-images
+- Static + React!
+  - Static, Server Side Rendered html is great for SEO
+  - Static also means it still works with javascript disabled!
+  - Static sites are great for security... hackers can't take over your PHP spam the world
+  - A visitor first gets static html, then javascript and React takes over
+- Automatic Route based code splitting! Don't have to download all the js at once
+- Can take advantage of awesome NodeJS frameworks... web code isn't just for browsers anymore
+  - [ElectronJS](https://www.electronjs.org/) for Windows/MacOS/Linux desktop apps!
+  - They have already made a [Gatsby desktop app w/ Electron!](https://github.com/gatsbyjs/desktop)
+  - [Capacitor](https://capacitorjs.com/) for iOS & Android apps with native functionality!
+  - [React Native](https://reactnative.dev/), used by Facebook and Instagram mobile apps, can also
+    be used... it's React!
+- [Gatsby Plugins](https://www.gatsbyjs.com/plugins): tons of them!
+- Ready to integrate with CMS's including Wordpress
+  - [Forestry](https://forestry.io/) & [Tina CMS](https://tinacms.org/):
+  - [Agility CMS](https://agilitycms.com/)
+  - [Contenful](https://www.contentful.com/)
+  - [Netlify CMS](https://www.netlifycms.org/)
+  - Many more...
+- [JAMstack](https://jamstack.org/) means you can deploy to CDN... available worldwide... Netlify
+  rocks!
+- Community: the Gatsby and Jamstack communities are very active!
+
 ### Gatsby and Forestry to the Rescue!
 
 Then I stumbled on someone else's personal site that was made with Gatsby, Forestry, and Netlify. At
 that point I still hadn't spent any quality time with Gatsby, but when I found Forestry and Netlify
 I suddenly had a super easy way to try it all out. I was amazed by how fast Gatsby was the more I
 played with it. The fact that it generates static pages but still takes advantage of Single Page
-Application techniques... and it uses Node.js to do it made it exactly what I wanted. When I
-realized that Netlify allows you to deploy a gatsby site straight from github to their global CDN
-service... I was hooked.
+Application techniques... exactly what I wanted. When I realized that Netlify allows you to deploy a
+gatsby site straight from github to their global CDN service... I was hooked.
 
-Creating a Gatsby site was so easy with Forestry that I'm not sure I need to write about it... you
+Creating a Gatsby site is so easy with Forestry that I'm not sure I need to write about it... you
 can create an account by linking your GitHub account, then go to
 [Forestry's starter templates page](https://forestry.io/starters/) and click on "Brevifolia".
 [Brevifolia, written by Kendall Strautman](https://github.com/kendallstrautman/brevifolia-gatsby-forestry),
@@ -147,7 +176,7 @@ here is the shortlist along with some helpful resources I found along the way:
   - https://www.gatsbyjs.com/docs/add-seo-component/
   - https://github.com/marisamorby/marisamorby.com/blob/master/packages/gatsby-theme-blog-sanity/src/components/seo.js
 - Optimized graphql queries and Gatsby image settings for my images
-- Pulled in timeToRead from markdownRemark and put in formatted <time> tag
+- Pulled in timeToRead from markdownRemark and put in formatted `<time>` tag
 - Various components for footer, logo, modified layout, social media links
 - Updated all npm packages to latest major releases... 0 vulnerabilities yay!
 - Dropped node-sass for sass package
@@ -165,7 +194,7 @@ here is the shortlist along with some helpful resources I found along the way:
   - gatsby-plugin-twitter with modifications placed in gatsby-browser.js
   - domPurify to santize html generated from markdown posts
 
-<div style="padding:1.45rem; margin: 1.55rem 0 3rem; background: #d8eff7; border-left: 6px solid #61a2b9;">
+<div class="em-box">
   <p style="margin:0;">
   <em>See all the code on Github! --> </em>
   <a href="https://github.com/pvaladez/petervaladez.com" alt="petervaladez.com github repo"> https://github.com/pvaladez/petervaladez.com</a>
@@ -198,64 +227,6 @@ something I can be proud to be a part of.
 
 ### What's Next?
 
-In the next post I will talk about some of my design choices and go in depth with my code!
-
-<!--
-```scss{numberLines: true}
-.twitter_embed {
-  position: relative;
-  max-width: 550px;
-  margin-bottom: ms(2);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: hsl(0, 0%, 99%);
-    border-radius: 15px;
-    border: 1px solid hsl(0, 0%, 92%);
-    animation: twitter_timeout .3s cubic-bezier(1,.01,.41,1) 8s forwards;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 0;
-    width: 0%;
-    max-width: calc(100% - 20px);
-    height: 4px;
-    z-index: 2;
-    background: hsl(0, 0%, 90%);
-    border-radius: 4px;
-    animation: twitter_loading_bar .6s cubic-bezier(1,.01,.41,1) forwards,
-               twitter_timeout .3s cubic-bezier(1,.01,.41,1) 8s forwards;
-  }
-  &.twitter_rendered::before {
-    animation: twitter_rendered .3s cubic-bezier(1,.01,.41,1) forwards;
-  }
-  &.twitter_rendered::after {
-    display: none;
-  }
-
-  >div:first-child {
-    margin: 0 auto !important;
-
-    >iframe {
-      margin: 0 !important;
-    }
-  }
-  blockquote {
-    margin-top: 1rem;
-  }
-  >figcaption {
-    margin-top: .5rem;
-    font-size: ms(-1);
-  }
-}
-```
--->
+In the next post I will show you how I modified the Gatsby Twitter plugin.
 
 <!-- <img src="http://localhost:8000/gatsby_logo.svg"  style="margin-left: calc(-50vw + 400px);margin-right: calc(-50vw + 400px); max-width: none"/> -->

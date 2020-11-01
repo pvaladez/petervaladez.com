@@ -19,9 +19,9 @@ export default function DarkModeToggle({ className }) {
       type="button"
     >
       {colorMode === 'dark' ? (
-        <Icon icon={sunIcon} />
-      ) : (
         <Icon icon={moonIcon} />
+      ) : (
+        <Icon icon={sunIcon} />
       )}
     </button>
   );

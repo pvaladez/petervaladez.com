@@ -1,27 +1,31 @@
 export const COLORS = {
   text: {
     light: 'hsl(0deg 0% 27%)', // #464646 dark grey
-    dark: 'hsl(0deg, 0%, 100%)', // near-black
+    dark: 'hsl(210deg 17% 86%)', // light grey
   },
   background: {
     light: 'hsl(0deg, 0%, 100%)', // white
-    dark: 'hsl(250deg 6% 29%)', // dark grey
+    dark: 'hsl(250deg 6% 30%)', // dark grey
   },
-  background_gradient: {
+  emBackground: {
+    light: 'hsl(195deg 66% 91%)', // light blue
+    dark: 'hsl(216deg 23% 46%)', // dark blue
+  },
+  backgroundGradient: {
     light: 'radial-gradient(#ffffff, #b7b7b7)',
-    dark: 'radial-gradient(#d0d0d0, #6b6b6b)',
+    dark: 'radial-gradient(hsl(225deg 9% 56%), hsl(224deg 15% 28%))',
   },
   primary: {
     light: 'hsl(340deg, 100%, 40%)', // Pinkish-red
     dark: 'hsl(50deg, 100%, 50%)', // Yellow
   },
   secondary: {
-    light: '#272343', // Purplish-blue
-    dark: 'hsl(190deg, 100%, 40%)', // Cyan
+    light: 'hsl(213deg 49% 21%)', // Dark Blue #272343
+    dark: 'hsl(210deg 57% 66%)', // light-bluish
   },
-  image_filter: {
+  imageFilter: {
     light: 'none',
-    dark: 'brightness(0.85)',
+    dark: 'brightness(0.92)',
   },
   // Grays, scaling from least-noticeable to most-noticeable
   gray300: {
