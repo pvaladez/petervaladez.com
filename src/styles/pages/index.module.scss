@@ -24,6 +24,7 @@
 
   a {
     padding: 0 8px;
+    text-decoration: none;
   }
 }
 
@@ -52,7 +53,7 @@
   }
 
   svg {
-    font-size: 48px;
+    font-size: 2.5rem;
   }
 }
 
@@ -77,8 +78,13 @@
 
   .socialMedia {
     justify-content: center;
+
     li {
       padding: 0 26px;
+    }
+
+    svg {
+      font-size: 3rem;
     }
   }
 }

@@ -63,6 +63,14 @@ module.exports = {
       options: {
         plugins: [
           'gatsby-remark-normalize-paths',
+          'gatsby-remark-copy-linked-files',
+          {
+            resolve: '@weknow/gatsby-remark-codepen',
+            options: {
+              theme: 'dark',
+              height: 400,
+            },
+          },
           {
             resolve: 'gatsby-remark-images',
             options: {

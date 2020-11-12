@@ -101,6 +101,12 @@ export default function About({ data }) {
             <ul className={styles.contact_me_list}>
               <li>
                 <span>
+                  See some of my past work below
+                  <span role="img" aria-label="past work below">👇</span>
+                </span>
+              </li>
+              <li>
+                <span>
                   <a href="/PeterValadez_resume.pdf">Have a look at my resume</a>
                 </span>
               </li>

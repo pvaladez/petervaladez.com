@@ -54,7 +54,10 @@ export const onRouteUpdate = () => {
 
     window.twttr.ready((twttr) => {
       twttr.events.bind('rendered', (event) => {
-        event.target.closest('.twitterEmbed__container').classList.add('twitterEmbed--rendered');
+        const container = event.target.closest('.twitterEmbed__container');
+        const { height } = event.target.getBoundingClientRect();
+        container.style.minHeight = `${height}px`;
+        container.classList.add('twitterEmbed--rendered');
       });
     });
 

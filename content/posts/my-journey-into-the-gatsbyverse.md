@@ -10,12 +10,30 @@ Gatsby! Although I’ve never attempted anything as ambitious as creating a blog
 scratch, that fact hasn’t stopped the occassional feelings of guilt for not getting something up. I
 can relate to this:
 
-<figure class="twitterEmbed">
+<!-- <figure class="twitterEmbed">
 <div class="twitterEmbed__container" style="min-height:506px;">
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Me everytime someone tweets about starting a blog <a href="https://t.co/5ADpE9ec0j">pic.twitter.com/5ADpE9ec0j</a></p>&mdash; Annie 🦄⚡ (@anniebombanie_) <a href="https://twitter.com/anniebombanie_/status/1304087153559965698?ref_src=twsrc%5Etfw">September 10, 2020</a></blockquote> 
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Me everytime someone tweets about starting a blog <a href="https://t.co/5ADpE9ec0j">pic.twitter.com/5ADpE9ec0j</a></p>&mdash; Annie 🦄⚡ (@anniebombanie_) <a href="https://twitter.com/anniebombanie_/status/1304087153559965698?ref_src=twsrc%5Etfw">September 10, 2020</a></blockquote>
 </div>
-<figcaption>I might have modified gatsby-plugin-twitter and added some CSS animations to make the embedded tweet load without having content jump around... lol... at least that particular task didn't take toooooo long... </figcaption>
-</figure>
+<figcaption>I might have modified gatsby-plugin-twitter and added some CSS animations to make the embedded tweet load without having content jump around... </figcaption>
+</figure> -->
+
+![In the spirit of this cartoon by @vincentdnl, I decided to post this as a simple image instead of an embedded tweet. See links below.](/content/images/developer-blogging-cartoon.jpg)
+
+Funny enough, the decision on whether to load the cartoon above as an embedded tweet using
+[gatsby-plugin-twitter](https://www.gatsbyjs.com/plugins/gatsby-plugin-twitter/) or to simply insert
+an image felt like an example of the dilemma posed by the cartoon(so meta!😮). I wasn't satisfied
+with the default behavior of embedded tweets, because as tweets load it causes content to jump
+around the page. Why ruin the refined page loading experience you get with Gatsby image plugins??
+So, I initially created some css animations and modified gatsby-plugin-twitter to load the tweet
+without the page jumps. However, I feel like something bad will happen to me if I load that
+particular twitter cartoon in a more complicated way than I absolutely have to _in a blog post about
+**finally** getting a blog up_.
+
+One down side of loading the cartoon as a simple image is that I don't know of a way to put links in
+the caption text. So here is
+[the original tweet by @vincentdnl](https://twitter.com/vincentdnl/status/1268573228626333703), and
+if you are like me [@anniebombanie\_](https://twitter.com/anniebombanie_/status/1304087153559965698)
+where you probably actually saw it first.
 
 ### A Bit of History...
 
@@ -74,13 +92,14 @@ I liked Gatsby because it used Node.js.
 
 - Image Optimization with gatsby-image
   - Scale down & crop with graphql
-  - Lazy load and automatic blur-up technique for faster loading
+  - Lazy loading for faster page loads
+  - Automatic blur-up technique to avoid content jumping around as images load
   - Automatically creates responsive image sets
   - All above available for markdown images w/ gatsby-remark-images
 - Static + React!
   - Static, Server Side Rendered html is great for SEO
   - Static also means it still works with javascript disabled!
-  - Static sites are great for security... hackers can't take over your PHP spam the world
+  - Static sites are great for security... hackers can't take over your PHP to spam the world
   - A visitor first gets static html, then javascript and React takes over
 - Automatic Route based code splitting! Don't have to download all the js at once
 - Can take advantage of awesome NodeJS frameworks... web code isn't just for browsers anymore
@@ -99,6 +118,8 @@ I liked Gatsby because it used Node.js.
 - [JAMstack](https://jamstack.org/) means you can deploy to CDN... available worldwide... Netlify
   rocks!
 - Community: the Gatsby and Jamstack communities are very active!
+- [This post from the Gatsby blog](https://www.gatsbyjs.com/blog/2019-04-02-behind-the-scenes-what-makes-gatsby-great/)
+  goes in depth on what makes Gatsby great
 
 ### Gatsby and Forestry to the Rescue!
 
@@ -163,20 +184,25 @@ here is the shortlist along with some helpful resources I found along the way:
 - Separate index/home page with react-spring animated drop-shadow filter
 - Contact form using Formik and react-google-recaptcha
   - Derek Spaulding:
-    https://www.derekaspaulding.com/blog/simple-contact-form-with-gatsby-formik-and-netlify/
-  - Sean C. Davis: https://cobwwweb.com/what-you-need-to-know-about-netlify-forms
-  - Shawn @Swyx Wang: https://github.com/sw-yx/gatsby-netlify-form-example-v2
+    [Simple Contact Form with Gatsby, Formik and Netlify](https://www.derekaspaulding.com/blog/simple-contact-form-with-gatsby-formik-and-netlify/)
+  - Sean C. Davis:
+    [What You Need to Know When Using Netlify Forms](https://cobwwweb.com/what-you-need-to-know-about-netlify-forms)
+  - Shawn @Swyx Wang:
+    [Integrating Netlify Form Handling in Gatsby](https://github.com/sw-yx/gatsby-netlify-form-example-v2)
 - Dark Mode
-  - Josh W Comeau: https://joshwcomeau.com/gatsby/dark-mode/
-  - Rowland I. Ekemezie: https://rowlandekemezie.com/posts/dark-theme-support-for-my-website/
-  - Divyanshu Maithani: https://divyanshu013.dev/blog/gatsby-dark-mode/
+  - Josh W Comeau: [The Quest for the Perfect Dark Mode](https://joshwcomeau.com/gatsby/dark-mode/)
+  - Rowland I. Ekemezie:
+    [Dark theme support for my website(CSS variables, React hooks, and sass variables)](https://rowlandekemezie.com/posts/dark-theme-support-for-my-website/)
+  - Divyanshu Maithani: [Dark mode in Gatsby](https://divyanshu013.dev/blog/gatsby-dark-mode/)
 - Comments using utterances
-  - Tania Rascia: https://www.taniarascia.com/adding-comments-to-my-blog/
+  - Tania Rascia:
+    [Adding Comments to My Blog (via Utterances)](https://www.taniarascia.com/adding-comments-to-my-blog/)
 - Previous and Next blog buttons with modified graphql queries
-  - Tori Pugh: https://toripugh.com/blog/gatsby-blog--next-and-previous-links
+  - Tori Pugh:
+    [Gatsby Blog: Next and Previous Links](https://toripugh.com/blog/gatsby-blog--next-and-previous-links)
 - SEO component to better take advantage of Gatsby's static SEO friendliness
-  - https://www.gatsbyjs.com/docs/add-seo-component/
-  - https://github.com/marisamorby/marisamorby.com/blob/master/packages/gatsby-theme-blog-sanity/src/components/seo.js
+  - [Gatbsy Documentation | Adding an SEO Component](https://www.gatsbyjs.com/docs/add-seo-component/)
+  - [Github | marisamorby/marisamorby.com](https://github.com/marisamorby/marisamorby.com/blob/master/packages/gatsby-theme-blog-sanity/src/components/seo.js)
 - Optimized graphql queries and Gatsby image settings for my images
 - Pulled in timeToRead from markdownRemark and put in formatted `<time>` tag
 - Various components for footer, logo, modified layout, social media links
@@ -229,6 +255,7 @@ something I can be proud to be a part of.
 
 ### What's Next?
 
-In the next post I will show you how I modified the Gatsby Twitter plugin.
+In the next post I will show you how I modified the Gatsby Twitter plugin, and maybe you can tell me
+if you like the simple image or the modified tweet embed better.
 
 <!-- <img src="http://localhost:8000/gatsby_logo.svg"  style="margin-left: calc(-50vw + 400px);margin-right: calc(-50vw + 400px); max-width: none"/> -->

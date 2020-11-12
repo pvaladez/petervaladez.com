@@ -27,9 +27,6 @@
     &:last-of-type {
       margin-bottom: 0;
     }
-    a {
-      border-bottom: solid;
-    }
   }
 }
 
@@ -50,6 +47,7 @@
 
   a {
     border-bottom: 2px dashed;
+    text-decoration: none;
   }
 }
 

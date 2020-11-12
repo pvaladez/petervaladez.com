@@ -10,7 +10,29 @@ import Comments from '../components/Comments';
 import styles from '../styles/templates/blogPost.module.scss';
 /* import ThemeProvider from '../components/ThemeProvider'; */
 
-export const blogPost = ({ data, pageContext }) => {
+export default function BlogPost({ data, pageContext }) {
+  React.useLayoutEffect(() => {
+    document.querySelectorAll('.twitterEmbed__container').forEach((el) => {
+      const container = el;
+      const minHeights = JSON.parse(container.dataset.heights);
+      const windowWidth = document.documentElement.clientWidth;
+      let minHeight = 0;
+      let breakpoint = 100000;
+
+      Object.entries(minHeights).forEach(([key, value]) => {
+        const keyInt = parseInt(key, 10);
+        if (windowWidth <= keyInt && keyInt < breakpoint) {
+          minHeight = value;
+          breakpoint = keyInt;
+        }
+      });
+
+      if (minHeight !== 0) {
+        container.style.minHeight = `${minHeight}px`;
+      }
+    });
+  }, []);
+
   /* { next } from graphql is actually the chronologically previous post & vice versa */
   const { next: prevPost, previous: nextPost } = pageContext;
   const postData = data.markdownRemark;
@@ -84,9 +106,7 @@ export const blogPost = ({ data, pageContext }) => {
       </section>
     </Layout>
   );
-};
-
-export default blogPost;
+}
 
 // dynamic page query, must occur within each post context
 // $slug is made available by context from createPages call in gatsby-node.js
