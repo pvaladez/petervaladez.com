@@ -148,11 +148,20 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <video controls muted>
+        {/* <video controls muted>
           <source src={execDashVid} type="video/mp4" />
           <source src={execDashVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
           Sorry, there was a problem loading this video.
-        </video>
+        </video> */}
+        <div className="youtubeEmbed">
+          <iframe
+            title="Executive Dashboard"
+            src="https://www.youtube-nocookie.com/embed/cHURYQQ9gNk"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
         <div className="swiperDescription">
           <p>
             • inPowerSuite® Executive Dashboard allows displaying a variety of sales related stats
@@ -163,11 +172,20 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <video controls muted>
+        {/* <video controls muted>
           <source src={analyticsVid} type="video/mp4" />
           <source src={analyticsVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
           Sorry, there was a problem loading this video.
-        </video>
+        </video> */}
+        <div className="youtubeEmbed">
+          <iframe
+            title="Web Analytics"
+            src="https://www.youtube-nocookie.com/embed/PFkRK54CjjI"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
         <div className="swiperDescription">
           <p>
             • inPowerSuite® Web Analytics Dashboard allows displaying a variety of web analytics
