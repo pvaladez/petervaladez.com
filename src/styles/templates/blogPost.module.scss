@@ -145,13 +145,19 @@
 
 .comments_title {
   margin-bottom: 0;
-  margin-left: 64px;
+  margin-left: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
 }
 
 .comment_box {
   display: block;
+}
+
+@media (min-width: 544px) {
+  .comments_title {
+    margin-left: 64px;
+  }
 }
 
 @media (min-width: 768px) {
