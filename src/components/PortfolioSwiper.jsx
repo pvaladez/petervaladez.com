@@ -5,7 +5,9 @@ import Swiper from 'react-id-swiper';
 import '../styles/components/portfolioSwiper.scss';
 /* import 'swiper/css/swiper.min.css'; */
 import execDashVid from '../../content/images/portfolio/executive-dashboard.mp4';
+import execDashVidSmall from '../../content/images/portfolio/executive-dashboard-small.mp4';
 import analyticsVid from '../../content/images/portfolio/web-analytics.mp4';
+import analyticsVidSmall from '../../content/images/portfolio/web-analytics-small.mp4';
 
 export default function PortfolioSwiper() {
   const query = useStaticQuery(graphql`
@@ -146,8 +148,10 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <video controls>
+        <video controls muted>
           <source src={execDashVid} type="video/mp4" />
+          <source src={execDashVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
+          Sorry, there was a problem loading this video.
         </video>
         <div className="swiperDescription">
           <p>
@@ -159,8 +163,10 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <video controls>
+        <video controls muted>
           <source src={analyticsVid} type="video/mp4" />
+          <source src={analyticsVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
+          Sorry, there was a problem loading this video.
         </video>
         <div className="swiperDescription">
           <p>

@@ -174,6 +174,8 @@ are getting started with Node.js and Gatsby local development, especially if you
   files([especially your /node_modules](https://medium.com/@deanmcrobie/a-quick-speed-up-for-node-gatsby-development-on-windows-with-wsl2-cef7f2a13580))
   to live in the Windows filesystem. I've found the easiest solution is to just put your Gatsby
   files in the \\\wsl\\\$ filesystem, so the WSL Ubuntu VM has direct access. Problems solved!
+- Add `*Zone.Identifier` to your .gitignore file. Windows adds "Zone.Identifier" files in the WSL
+  filesystem for security reasons when you copy a file from Windows to WSL
 - Microsoft Visual Studio Code, aka vscode, is great and free. I was using WebStorm previously and
   there are a few things I missed from WebStorm, but vscode has been cranking out a lot of nice
   features lately including the "Remote - WSL" extension for easy integration with WSL

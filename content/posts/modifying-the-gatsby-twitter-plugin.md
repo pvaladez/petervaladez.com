@@ -12,7 +12,7 @@ most sites, this embedded tweet doesn't cause content to jump around the page wh
 and renders.
 
 <figure class="twitterEmbed">
-<div class="twitterEmbed__container" style="min-height:506px;" data-heights='{"582": 426, "375": 381}'>
+<div class="twitterEmbed__container" style="min-height:506px;" data-heights='{"582": 425, "375": 381}'>
 <div class="loadingio-spinner"><div class="ldio-ptw9oz79bzf">
 <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div></div>
@@ -308,7 +308,7 @@ use `twttr.ready()` it may work sometimes and break other times, depending on th
 So the important part here is Line 15; I'm adding a `twitterEmbed--rendered` class to my container
 div which will kick off the `twitterRendered` CSS animation. It looks like this:
 
-<video controls loop>
+<video controls loop muted>
   <source src="/videos/tweet-background-animation.mp4" type="video/mp4" />
 </video>
 
@@ -413,7 +413,7 @@ markup looks like with the spinner div's:
 
 **_Here's what it looks like all together:_**
 
-<video controls loop>
+<video controls loop muted>
   <source src="/videos/tweet-loading-final.mp4" type="video/mp4" />
 </video>
 
