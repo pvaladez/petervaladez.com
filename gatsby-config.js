@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: config.title,
     description: config.description,
-    baseUrl: '',
+    baseUrl: 'https://petervaladez.com',
     repoUrl: config.repository_url,
     about: config.about,
     contact: config.contact,
