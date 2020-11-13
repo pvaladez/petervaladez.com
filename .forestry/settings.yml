@@ -19,7 +19,8 @@ sections:
   label: Author List
 - type: document
   path: content/data/info.json
-  label: Info Page
+  label: About Page
+  read_only: true
 - type: heading
   label: General Config
 - type: document
