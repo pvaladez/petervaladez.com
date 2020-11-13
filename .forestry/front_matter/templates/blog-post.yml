@@ -2,39 +2,39 @@
 label: Blog Post
 hide_body: false
 fields:
-  - type: text
-    name: title
-    label: title
-  - name: author
-    type: select
-    default: ''
-    config:
-      required: true
-      options: []
-      source:
-        type: documents
-        section: author-list
-        file: content/data/authors.yaml
-        path: authors
-    label: author
-    description: Enter author of post
-  - name: date
-    type: datetime
-    label: date
-    description: Date post was created
-    config:
-      required: false
-      date_format:
-      time_format:
-      display_utc: false
-    default: now
-  - name: thumb_image
-    type: file
-    config:
-      maxSize: '10'
-    label: thumbnail image
-    description: Enter thumbnail image for blog post here
-    default: '/content/images/gatsby_logo.png'
+- type: text
+  name: title
+  label: title
+- name: author
+  type: select
+  default: ''
+  config:
+    required: true
+    options: []
+    source:
+      type: documents
+      section: author-list
+      file: content/data/authors.yaml
+      path: authors
+  label: author
+  description: Enter author of post
+- name: date
+  type: datetime
+  label: date
+  description: Date post was created
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: now
+- name: thumb_image
+  type: file
+  config:
+    maxSize: '10'
+  label: thumbnail image
+  description: Enter thumbnail image for blog post here
+  default: "/content/images/gatsby_logo.png"
 pages:
-  - content/posts/my-journey-into-the-gatsbyverse.md
-  - content/posts/modifying-the-gatsby-twitter-plugin.md
+- content/posts/modifying-the-gatsby-twitter-plugin.md
+- content/posts/my-journey-into-the-gatsbyverse.md

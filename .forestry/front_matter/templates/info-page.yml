@@ -2,38 +2,38 @@
 label: Info Page
 hide_body: true
 fields:
-  - name: description
-    type: textarea
-    default: ''
-    config:
-      required: false
-      wysiwyg: true
-      schema:
-        format: html-blocks
-    label: description
-    description: Enter description here
-  - name: cta
-    type: textarea
-    default: ''
-    config:
-      required: false
-      wysiwyg: true
-      schema:
-        format: html-blocks
-    label: cta
-    description: Enter call to action here
-  - type: field_group
-    name: contact
-    label: contact
-    fields:
-      - type: text
-        name: email
-        label: email
-      - type: text
-        name: twitter_handle
-        label: twitter_handle
-      - type: text
-        name: github_handle
-        label: github_handle
+- name: description
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: html-blocks
+  label: description
+  description: Enter description here
+- name: cta
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: html-blocks
+  label: cta
+  description: Enter call to action here
+- type: field_group
+  name: contact
+  label: contact
+  fields:
+  - type: text
+    name: email
+    label: email
+  - type: text
+    name: twitter_handle
+    label: twitter_handle
+  - type: text
+    name: github_handle
+    label: github_handle
 pages:
-  - content/data/info.json
+- content/data/info.json
