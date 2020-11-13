@@ -6,13 +6,13 @@ author: Peter Valadez
 ---
 
 In my last post, I started with an image of the cartoon below by
-[@vincentdnl](https://twitter.com/vincentdnl/status/1268573228626333703). As you can see I have
-embedded a whole tweet from @anniebombanie\_ in this post. But unlike embedded tweets on most
-websites, this embedded tweet doesn't cause content to jump around the page when the tweet loads and
-renders.
+[@vincentdnl](https://twitter.com/vincentdnl/status/1268573228626333703). As you can see, this time
+I embedded a tweet from @anniebombanie\_ which features the cartoon. But unlike embedded tweets on
+most sites, this embedded tweet doesn't cause content to jump around the page when the tweet loads
+and renders.
 
 <figure class="twitterEmbed">
-<div class="twitterEmbed__container" style="min-height:506px;" data-heights='{"582": 426, "375": 382}'>
+<div class="twitterEmbed__container" style="min-height:506px;" data-heights='{"582": 426, "375": 381}'>
 <div class="loadingio-spinner"><div class="ldio-ptw9oz79bzf">
 <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
 </div></div>
@@ -51,16 +51,19 @@ I admit that I've been watching my site load more than the average visitor would
 just a problem on my site. Recently, I was browsing a major news site on my iPhone, and the page had
 a bunch of embedded tweets. I was out of my house, so the speed of my phone's internet connection
 probably played a role. But several times I was in the middle of a paragraph and the text was jerked
-away from because a tweet needed to load. Chrome, Firefox, Edge, and even Opera all support
+away because a tweet needed to load. Chrome, Firefox, Edge, and even Opera all support
 [scroll anchoring](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring),
-but sadly scroll anchoring is not supported on Safari for MacOS or iOS. So, basically all iphones
-have a terrible experience with respect to this problem.
+but sadly scroll anchoring is not supported on Safari for MacOS or iOS. So, basically all iPhones
+have a terrible experience with respect to this problem... _if you don't control the loading of
+assets carefully like I'm doing with my embedded tweet._
 
 ### My Solution
 
-When you click the "Embed Tweet" menu option on a tweet you will get a blockquote and a link to
-Twitter's widget.js javascript file. The plugin, gatsby-plugin-twitter, tells you to grab only the
-blockquote and put it in your markdown. You should have something like this:
+When you click the "Embed Tweet" menu option on
+[Twitter.com](https://twitter.com/anniebombanie_/status/1304087153559965698) you will get a
+blockquote and a link to Twitter's widget.js javascript file. The plugin, gatsby-plugin-twitter,
+tells you to grab only the blockquote and put it in your markdown. You should have something like
+this:
 
 ```html{numberLines: true}
 <blockquote class="twitter-tweet">
@@ -100,8 +103,8 @@ on the div. Here's my markup:
 </figure>
 ```
 
-Of course, this requires me hand code a min-height value... more on this later. You'll also notice
-that I've added a `<figcaption>`... not always necessary, but in this case I wanted one. I am
+Of course, this requires me to hand code a min-height value... more on this later. You'll also
+notice that I've added a `<figcaption>`... not always necessary, but in this case I wanted one. I am
 putting the `min-height` on `twitterEmbed__container` rather than `twitterEmbed`, because I don't
 care how much height is added by my figcaption since it's not being loaded asynchronously. Of course
 I'm using `min-height` rather than simply `height` in case the rendered tweet needs more height than
@@ -116,7 +119,7 @@ using a container div with a [fixed aspect ratio](https://css-tricks.com/aspect-
 Unfortunately, because of text wrapping and other unidentified reasons the aspect ratio doesn't
 remain the same.
 
-The result is that the `figcaption` gets pushed down too far when rendered on mobile:
+The result is that the `<figcaption>` gets pushed down too far when rendered on mobile:
 ![Tweet pushed down due to improper min-height](/content/images/tweet-pushed-down.jpg)
 
 Possible solutions for this could be:
@@ -126,13 +129,13 @@ Possible solutions for this could be:
 - ~~Create a media query in my inline style tag~~ Nope, that's not possible :(
 - Put unique classes or id's on every embedded tweet so I can have separate min-height values inside
   media queries... kind of sounds like a pain
-- Create a plugin that renders the tweet while building the HTML from Markdown, aka while server
-  side rendering, to find the the height of the rendered tweet at different screen sizes. Then the
-  plugin can use the computed height in combination with other solutions.
-- Instead of putting the min-height in an inline style attribute, I could put it in a data-heights
-  attribute. This attribute could hold a JSON object with breakpoints paired with the desired
-  min-height values. Then I could call useEffect or useLayoutEffect to set the min-height after
-  checking the screen width. Alternatively, I could use gatsby-ssr.js to inject some blocking
+- Create a Gatsby plugin that renders the tweet while building the HTML from Markdown, aka while
+  server side rendering, to find the the height of the rendered tweet at different screen sizes.
+  Then the plugin can use the computed height in combination with other solutions.
+- Instead of putting the min-height only in an inline style attribute, I could put it in a
+  data-heights attribute. This attribute could hold a JSON object with breakpoints paired with the
+  desired min-height values. Then I could call useEffect or useLayoutEffect to set the min-height
+  after checking the screen width. Alternatively, I could use gatsby-ssr.js to inject some blocking
   javascript which would set the min-height.
 
 For now I'll hold off on doing any fancy server side rendering, but it may be a nice way to avoid
@@ -146,6 +149,7 @@ Here's my markup with the new data-heights attribute:
 <div
   class="twitterEmbed__container"
   style="min-height:506px;"
+  // highlight-next-line
   data-heights='{"582": 426, "375": 382}'
 ></div>
 ```
@@ -162,15 +166,20 @@ React.useLayoutEffect(() => {
     let minHeight = 0;
     let breakpoint = 100000;
 
+    // Iterate through my breakpoints, find the smallest
+    // breakpoint which is greater or equal to the
+    // screen size, and assign the min-height value
+    // of that corresponding breakpoint to the container
     Object.entries(minHeights).forEach(([key, value]) => {
       const keyInt = parseInt(key, 10);
-      if (windowWidth <= keyInt && keyInt < breakpoint) {
+      if (keyInt >= windowWidth && keyInt < breakpoint) {
         minHeight = value;
         breakpoint = keyInt;
       }
     });
 
     if (minHeight !== 0) {
+      // highlight-next-line
       container.style.minHeight = `${minHeight}px`;
     }
   });
@@ -181,9 +190,9 @@ React.useLayoutEffect(() => {
 
 So now that that I have a plan to prevent content from jumping around I want to add some loading
 animations. Instead of seeing a bunch of whitespace around the block quote, I'll cover it with a
-light-gray background and add some kind of loading animation. I am using a ::before psuedo element
+light-gray background and add some kind of loading animation. I am using a `::before` psuedo element
 on `figure.twitterEmbed` for the background, and when it's time I will apply an animation that
-scales the ::before element to nothingness.
+scales the `::before` element to nothingness.
 
 Here's what that CSS looks like:
 
@@ -228,17 +237,18 @@ Here's what that CSS looks like:
 }
 ```
 
-Notice that I added a twitterTimeout animation... just in case the tweet doesn't render in an
+Notice that I added a `twitterTimeout` animation... just in case the tweet doesn't render in an
 acceptable amount of time I'll show the blockquote. You could also put a delay on the
-twitterRendered animation in the CSS declaration and hope that the tweet is rendered after the
+`twitterRendered` animation in the CSS declaration and hope that the tweet is rendered after the
 delay. However, Twitter's widgets.js provides events to let you know when the tweet is rendered.
 This is where I finally get to actually modifying the gatsby-plugin-twitter code!
 
 ### gatsby-plugin-twitter
 
 Ok, so one of the nice things about Gatsby is that it support themes and plugins with a technique
-called shadowing. As I understand, it is similar to the way that Wordpress overrides files with
-child themes. If you look at the source code for
+called [shadowing](https://www.gatsbyjs.com/docs/how-shadowing-works/). As I understand, it is
+similar to the way that Wordpress overrides files with child themes. If you look at the source code
+for
 [gatsby-plugin-twitter](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-twitter),
 you will see that it's really just a modified gatsby-browser.js file. So to modify this code all I
 have to do is copy
@@ -304,9 +314,9 @@ div which will kick off the `twitterRendered` CSS animation. It looks like this:
 
 You may have noticed that Twitter's widgets.js actually turns `blockquote.twitter-tweet` into
 `div.twitter-tweet.twitter-tweet-rendered` after the rendering is done. While I could have just
-added my CSS animations directly to `.twitter-tweet`, the fact that widgets.js is removing and
-adding elements during the rendering will mean that the gray background will flash a couple of times
-will rendering happens. Me no likey.
+added my CSS animations directly to `.twitter-tweet-rendered`, the fact that widgets.js is removing
+and adding elements during the rendering will mean that the gray background will flash a couple of
+times while rendering happens. Me no likey.
 
 ### Backup Plan
 
@@ -327,8 +337,8 @@ window.twttr.ready(twttr => {
 });
 ```
 
-Then I added a transition in my CSS so that when I update the min-height the content below will
-hopefully [smoothly slide up instead of jumping](https://css-tricks.com/content-jumping-avoid/).
+Then I add a transition in my CSS so when I update the min-height the content below will hopefully
+[smoothly slide up instead of jumping](https://css-tricks.com/content-jumping-avoid/).
 
 ```scss{numberLines: true}
 .twitterEmbed__container {
@@ -339,7 +349,7 @@ hopefully [smoothly slide up instead of jumping](https://css-tricks.com/content-
 ### Loading Animation
 
 To let our visitors know that there is something going on underneath the masked gray box where the
-embedded tweet will be, we are going to need an loading animation. There are a lot of ways to add
+embedded tweet will be, we are going to need a loading animation. There are a lot of ways to add
 loading animations, but after looking at
 [gatsby-remark-interactive-gifs](https://www.gatsbyjs.com/plugins/gatsby-remark-interactive-gifs/) I
 found that [loading.io](https://loading.io/) has really nice animations available. I'm using one of
@@ -409,7 +419,15 @@ markup looks like with the spinner div's:
 
 <div class="em-box">
   <p style="margin:0;">
-  <em>See all this code in action on Github --> </em>
-  <a href="https://github.com/pvaladez/petervaladez.com" alt="petervaladez.com github repo"> https://github.com/pvaladez/petervaladez.com</a>
+  <em>See all this code in action on my 
+    <a href="https://github.com/pvaladez/petervaladez.com" alt="petervaladez.com github repo"> Github repo!</a>
+  </em>
   </p>
 </div>
+
+### Let me Know What you Think!
+
+Do you you think it's a good idea to do this extra work to control how embedded tweets load, or do
+you think I'm asking for a headache?
+
+Stay tuned for more posts and thanks for reading!

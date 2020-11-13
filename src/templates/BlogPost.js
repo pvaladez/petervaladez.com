@@ -19,9 +19,13 @@ export default function BlogPost({ data, pageContext }) {
       let minHeight = 0;
       let breakpoint = 100000;
 
+      // Iterate through my breakpoints, find the smallest
+      // breakpoint which is greater or equal to the
+      // screen size, and assign the min-height value
+      // of that corresponding breakpoint to the container
       Object.entries(minHeights).forEach(([key, value]) => {
         const keyInt = parseInt(key, 10);
-        if (windowWidth <= keyInt && keyInt < breakpoint) {
+        if (keyInt >= windowWidth && keyInt < breakpoint) {
           minHeight = value;
           breakpoint = keyInt;
         }

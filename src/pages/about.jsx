@@ -156,7 +156,7 @@ export default function About({ data }) {
                     aria-hidden="true"
                     className={`${styles.social_icon} github_icon`}
                   />
-                  Github:
+                  GitHub:
                   {' '}
                   {infoData.contact.github.handle}
                 </a>

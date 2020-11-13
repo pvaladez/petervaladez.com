@@ -41,8 +41,8 @@
   p {
     color: var(--color-text);
     font-weight: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
 
     > img {
       display: block;
