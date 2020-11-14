@@ -420,7 +420,7 @@ markup looks like with the spinner div's:
 <div class="em-box">
   <p style="margin:0;">
   <em>See all this code in action on my 
-    <a href="https://github.com/pvaladez/petervaladez.com" alt="petervaladez.com github repo"> Github repo!</a>
+    <a href="https://github.com/pvaladez/petervaladez.com" alt="petervaladez.com GitHub repo"> GitHub repo!</a>
   </em>
   </p>
 </div>

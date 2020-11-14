@@ -84,7 +84,7 @@ above.
 ![https://www.voorhoede.nl/en/blog/why-our-website-is-faster-than-yours/](/content/images/voohoede-faster.jpg)
 
 I then tested [ghost](https://ghost.org/) with a local instance, but the thought of needing to
-configure and maintain a nodeJS web server felt like a bit more than I wanted to take on. The next
+configure and maintain a Node.js web server felt like a bit more than I wanted to take on. The next
 step was to start looking at the various static site generators that were available. From the start
 I liked Gatsby because it used Node.js.
 
@@ -105,7 +105,7 @@ I liked Gatsby because it used Node.js.
   will navigate to. So when you click on a link to a new page, the resources are probably already
   downloaded and cached.
 - Automatic Route based code splitting! Don't have to download all the js at once
-- Can take advantage of awesome NodeJS frameworks... web code isn't just for browsers anymore
+- Can take advantage of awesome Node.js frameworks... web code isn't just for browsers anymore
   - [ElectronJS](https://www.electronjs.org/) for Windows/MacOS/Linux desktop apps!
   - They have already made a [Gatsby desktop app w/ Electron!](https://github.com/gatsbyjs/desktop)
   - [Capacitor](https://capacitorjs.com/) for iOS & Android apps with native functionality!
@@ -235,7 +235,7 @@ here is the shortlist along with some helpful resources I found along the way:
 <div class="em-box">
   <p style="margin:0;">
   <em>See all the code on my 
-    <a href="https://github.com/pvaladez/petervaladez.com" alt="petervaladez.com github repo"> Github repo!</a>
+    <a href="https://github.com/pvaladez/petervaladez.com" alt="petervaladez.com github repo"> GitHub repo!</a>
   </em>
   </p>
 </div>

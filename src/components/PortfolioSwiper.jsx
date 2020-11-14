@@ -4,10 +4,11 @@ import Img from 'gatsby-image';
 import Swiper from 'react-id-swiper';
 import '../styles/components/portfolioSwiper.scss';
 /* import 'swiper/css/swiper.min.css'; */
-import execDashVid from '../../content/images/portfolio/executive-dashboard.mp4';
+/* import execDashVid from '../../content/images/portfolio/executive-dashboard.mp4';
 import execDashVidSmall from '../../content/images/portfolio/executive-dashboard-small.mp4';
 import analyticsVid from '../../content/images/portfolio/web-analytics.mp4';
-import analyticsVidSmall from '../../content/images/portfolio/web-analytics-small.mp4';
+import analyticsVidSmall from '../../content/images/portfolio/web-analytics-small.mp4'; */
+import SwiperYoutube from './SwiperYoutube';
 
 export default function PortfolioSwiper() {
   const query = useStaticQuery(graphql`
@@ -73,6 +74,11 @@ export default function PortfolioSwiper() {
         slidesPerView: 2,
       },
     },
+  };
+
+  const youtubeClick = (e) => {
+    const { target } = e;
+    target.classList.toggle('youtubeEmbed--playing');
   };
 
   return (
@@ -153,7 +159,7 @@ export default function PortfolioSwiper() {
           <source src={execDashVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
           Sorry, there was a problem loading this video.
         </video> */}
-        <div className="youtubeEmbed">
+        {/* <div className="youtubeEmbed" onClick={youtubeClick}>
           <iframe
             title="Executive Dashboard"
             src="https://www.youtube-nocookie.com/embed/cHURYQQ9gNk"
@@ -161,7 +167,11 @@ export default function PortfolioSwiper() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
-        </div>
+        </div> */}
+        <SwiperYoutube
+          title="Executive Dashboard"
+          id="cHURYQQ9gNk"
+        />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® Executive Dashboard allows displaying a variety of sales related stats
@@ -177,7 +187,7 @@ export default function PortfolioSwiper() {
           <source src={analyticsVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
           Sorry, there was a problem loading this video.
         </video> */}
-        <div className="youtubeEmbed">
+        {/*         <div className="youtubeEmbed" onClick={youtubeClick}>
           <iframe
             title="Web Analytics"
             src="https://www.youtube-nocookie.com/embed/PFkRK54CjjI"
@@ -185,7 +195,11 @@ export default function PortfolioSwiper() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
-        </div>
+        </div> */}
+        <SwiperYoutube
+          title="Web Analytics"
+          id="PFkRK54CjjI"
+        />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® Web Analytics Dashboard allows displaying a variety of web analytics
