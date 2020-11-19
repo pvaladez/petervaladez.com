@@ -16,6 +16,10 @@
     }
   }
 
+  &.playing .youtubeIcon {
+    opacity: 0;
+  }
+
   iframe {
     position: absolute;
     top: 0;
@@ -25,29 +29,46 @@
     height: 100%;
     width: 100%;
   }
+}
 
-  .overlay {
-    position: absolute;
-    top: 0px;
-    bottom: 44px;
-    width: 100%;
-    cursor: pointer;
-    z-index: 10000;
+.overlay {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  width: 100%;
+  cursor: pointer;
+  z-index: 10000;
 
-    &.playing .youtubeIcon {
-      opacity: 0;
-    }
-  }
-
+  /* leaves space on bottom to 
+     expose YouTube controls
+  bottom: 44px;
   .youtubeIcon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 82px;
-    margin-left: -39px;
     margin-top: -18px;
-    fill: #000000c4;
-    transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
-  }
+  } */
+}
+
+.thumbnail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.youtubeIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 82px;
+  margin-left: -39px;
+  margin-top: -41px;
+  cursor: pointer;
+  fill: #000000c4;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0, 0, 0.2, 1);
+  z-index: 11;
 }

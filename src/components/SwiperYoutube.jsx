@@ -1,4 +1,5 @@
 import React from 'react';
+import Img from 'gatsby-image';
 import YouTube from 'react-youtube';
 import styles from '../styles/components/swiperYoutube.module.scss';
 
@@ -26,12 +27,18 @@ function YoutubeIcon(props) {
 }
 
 export default function SwiperYoutube(props) {
-  const { id } = props;
+  const { id, thumbnail } = props;
   const [playing, setPlaying] = React.useState(false);
   const [player, setPlayer] = React.useState(null);
+  const [loading, lazyLoad] = React.useState(false);
+
+  const loadYoutube = () => {
+    lazyLoad(true);
+  };
 
   const onReady = (event) => {
     setPlayer(event.target);
+    event.target.playVideo();
   };
   const onStateChange = (event) => {
     const state = event.data;
@@ -42,11 +49,9 @@ export default function SwiperYoutube(props) {
       setPlaying(false);
     }
   };
-  const playClick = (e) => {
-    e.preventDefault();
+  const playClick = () => {
+    setPlaying((prevState) => !prevState);
 
-    setPlaying(!playing);
-    /* youtubeRef.current. */
     if (!playing) {
       player.playVideo();
     } else {
@@ -54,21 +59,37 @@ export default function SwiperYoutube(props) {
     }
   };
   const opts = {
+    host: 'https://www.youtube-nocookie.com',
     playerVars: {
       rel: 0,
+      loop: 1,
+      playlist: id,
+      controls: 0,
+      modestbranding: 1,
     },
   };
 
   return (
-    <div className={styles.youtubeEmbed}>
-      <div
-        className={`${styles.overlay} ${playing ? styles.playing : ''}`}
-        onClick={playClick}
-        role="presentation"
-      >
-        <YoutubeIcon className={styles.youtubeIcon} />
-      </div>
-      <YouTube videoId={id} opts={opts} onReady={onReady} onStateChange={onStateChange} />
+    <div className={`${styles.youtubeEmbed} ${playing ? styles.playing : ''}`}>
+      <YoutubeIcon className={styles.youtubeIcon} />
+      {!player
+        && (
+          <div className={styles.thumbnail} onClick={loadYoutube} role="presentation">
+            <Img fluid={thumbnail} />
+          </div>
+        )}
+      {!loading
+        || (
+          <>
+            <div
+              className={styles.overlay}
+              onClick={playClick}
+              role="presentation"
+            />
+            <YouTube videoId={id} opts={opts} onReady={onReady} onStateChange={onStateChange} />
+          </>
+        )}
+
     </div>
   );
 }

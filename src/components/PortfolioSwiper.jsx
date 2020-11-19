@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+/* import { graphql, useStaticQuery } from 'gatsby'; */
 import Img from 'gatsby-image';
 import Swiper from 'react-id-swiper';
 import '../styles/components/portfolioSwiper.scss';
@@ -9,47 +9,10 @@ import execDashVidSmall from '../../content/images/portfolio/executive-dashboard
 import analyticsVid from '../../content/images/portfolio/web-analytics.mp4';
 import analyticsVidSmall from '../../content/images/portfolio/web-analytics-small.mp4'; */
 import SwiperYoutube from './SwiperYoutube';
+import usePortfolioImages from '../hooks/usePortfolioImages';
 
 export default function PortfolioSwiper() {
-  const query = useStaticQuery(graphql`
-    query sliderImages {
-      portfolioImage1: file(relativePath: {eq: "portfolio/myaccount01-collage.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage2: file(relativePath: {eq: "portfolio/iphone-myaccount-reports-collage.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage3: file(relativePath: {eq: "portfolio/product-page-collage.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage4: file(relativePath: {eq: "portfolio/social-collage.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage5: file(relativePath: {eq: "portfolio/jwinters-site-collage.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage6: file(relativePath: {eq: "portfolio/ipad-party-central.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage7: file(relativePath: {eq: "portfolio/point-of-sale.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage8: file(relativePath: {eq: "portfolio/report-graphical-gene.jpg"}) {
-        ...portfolioImageSharp
-      }
-      portfolioImage9: file(relativePath: {eq: "portfolio/alterascape.com.jpg"}) {
-        ...portfolioImageSharp
-      }
-    }
-    fragment portfolioImageSharp on File {
-      childImageSharp {
-        id
-        fluid(maxWidth: 1068, fit: CONTAIN, background: "#ffffff") {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  `);
+  const images = usePortfolioImages();
   const params = {
     navigation: {
       nextEl: '.swiper-button-next',
@@ -76,15 +39,15 @@ export default function PortfolioSwiper() {
     },
   };
 
-  const youtubeClick = (e) => {
+  /* const youtubeClick = (e) => {
     const { target } = e;
     target.classList.toggle('youtubeEmbed--playing');
-  };
+  }; */
 
   return (
     <Swiper {...params}>
       <div>
-        <Img fluid={query.portfolioImage1.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage1.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® member dashboard using jQuery, Bootstrap, SwiperJS, and Font Awesome
@@ -95,7 +58,7 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <Img fluid={query.portfolioImage2.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage2.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® dashboard included many reporting and utility pages
@@ -107,7 +70,7 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <Img fluid={query.portfolioImage3.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage3.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® includes a full e-Commerce Storefront, supporting mobile and desktop
@@ -118,7 +81,7 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <Img fluid={query.portfolioImage4.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage4.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® integrates with social media networks to allow site members to share
@@ -130,7 +93,7 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <Img fluid={query.portfolioImage5.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage5.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® allows members to create personal websites with their favorite featured
@@ -143,13 +106,24 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <Img fluid={query.portfolioImage6.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage6.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® features a Party Plan Management System
             <br />
             • Responsible for revamping the CSS, adjusting Javascript, and adding a new Statement
             section
+          </p>
+        </div>
+      </div>
+      <div>
+        <Img fluid={images.portfolioImage7.childImageSharp.fluid} />
+        <div className="swiperDescription">
+          <p>
+            • inPowerSuite® features a point-of-sale module with allows connecting any computer
+            to scanners and receipt printers
+            <br />
+            • Responsible for revamping CSS and adding Font Awesome icons
           </p>
         </div>
       </div>
@@ -171,6 +145,7 @@ export default function PortfolioSwiper() {
         <SwiperYoutube
           title="Executive Dashboard"
           id="cHURYQQ9gNk"
+          thumbnail={images.portfolioImage8.childImageSharp.fluid}
         />
         <div className="swiperDescription">
           <p>
@@ -199,6 +174,7 @@ export default function PortfolioSwiper() {
         <SwiperYoutube
           title="Web Analytics"
           id="PFkRK54CjjI"
+          thumbnail={images.portfolioImage9.childImageSharp.fluid}
         />
         <div className="swiperDescription">
           <p>
@@ -211,18 +187,7 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <Img fluid={query.portfolioImage7.childImageSharp.fluid} />
-        <div className="swiperDescription">
-          <p>
-            • inPowerSuite® features a point-of-sale module with allows connecting any computer
-            to scanners and receipt printers
-            <br />
-            • Responsible for revamping CSS and adding Font Awesome icons
-          </p>
-        </div>
-      </div>
-      <div>
-        <Img fluid={query.portfolioImage8.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage10.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • inPowerSuite® is tailored for MLM companies and features genealogy management
@@ -233,7 +198,7 @@ export default function PortfolioSwiper() {
         </div>
       </div>
       <div>
-        <Img fluid={query.portfolioImage9.childImageSharp.fluid} />
+        <Img fluid={images.portfolioImage11.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
             • Alterascape.com featured integration with Ubersmith ticketing system to allow
