@@ -27,18 +27,18 @@ function YoutubeIcon(props) {
 }
 
 export default function SwiperYoutube(props) {
-  const { id, thumbnail } = props;
+  const { id, thumbnail, initLoading } = props;
   const [playing, setPlaying] = React.useState(false);
   const [player, setPlayer] = React.useState(null);
   const [loading, lazyLoad] = React.useState(false);
 
-  const loadYoutube = () => {
-    lazyLoad(true);
-  };
+  React.useEffect(() => {
+    if (initLoading === true) { lazyLoad(true); }
+  }, [initLoading]);
 
   const onReady = (event) => {
     setPlayer(event.target);
-    event.target.playVideo();
+    /* event.target.playVideo(); */
   };
   const onStateChange = (event) => {
     const state = event.data;
@@ -74,7 +74,7 @@ export default function SwiperYoutube(props) {
       <YoutubeIcon className={styles.youtubeIcon} />
       {!player
         && (
-          <div className={styles.thumbnail} onClick={loadYoutube} role="presentation">
+          <div className={styles.thumbnail} onClick={playClick} role="presentation">
             <Img fluid={thumbnail} />
           </div>
         )}

@@ -80,8 +80,8 @@ const FallbackStyles = () => {
 };
 
 export const onRenderBody = ({ setPreBodyComponents, setHeadComponents }) => {
-  setHeadComponents(<FallbackStyles />);
-  setPreBodyComponents(<InitializeThemeScript />);
+  setHeadComponents(<FallbackStyles key="FallbackStyles" />);
+  setPreBodyComponents(<InitializeThemeScript key="InitializeThemeScript" />);
 };
 
 export const wrapPageElement = ({ element }) => <App>{element}</App>;

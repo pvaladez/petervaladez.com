@@ -176,5 +176,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        analyzerMode: 'server',
+        analyzerPort: '8888',
+      },
+    },
   ],
 };

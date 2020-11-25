@@ -12,7 +12,7 @@ import devToIcon from '@iconify/icons-bx/bxl-dev-to';
 import Layout from '../components/Layout';
 import styles from '../styles/pages/about.module.scss';
 import useSiteMetaData from '../hooks/useSiteMetadata';
-import PortfolioSlider from '../components/PortfolioSwiper';
+import PortfolioSlider from '../components/PortfolioSwiperB';
 
 export default function About({ data }) {
   const { infoData } = useSiteMetaData();
