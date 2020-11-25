@@ -1,52 +1,76 @@
 import React from 'react';
-/* import { graphql, useStaticQuery } from 'gatsby'; */
 import Img from 'gatsby-image';
-import Swiper from 'react-id-swiper';
+import SwiperCore, {
+  Navigation, Pagination, EffectCoverflow,
+} from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+/* import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/effect-coverflow/effect-coverflow.scss'; */
 import '../styles/components/portfolioSwiper.scss';
-/* import 'swiper/css/swiper.min.css'; */
-/* import execDashVid from '../../content/images/portfolio/executive-dashboard.mp4';
-import execDashVidSmall from '../../content/images/portfolio/executive-dashboard-small.mp4';
-import analyticsVid from '../../content/images/portfolio/web-analytics.mp4';
-import analyticsVidSmall from '../../content/images/portfolio/web-analytics-small.mp4'; */
 import SwiperYoutube from './SwiperYoutube';
 import usePortfolioImages from '../hooks/usePortfolioImages';
 
+SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
+
 export default function PortfolioSwiper() {
   const images = usePortfolioImages();
-  const params = {
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    centeredSlides: true,
-    slidesPerView: '1',
-    effect: 'coverflow',
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: false,
-    },
-    breakpoints: {
-      1024: {
-        slidesPerView: 2,
-      },
-    },
-  };
+  const [loadYoutube, setLoadYoutube] = React.useState(false);
+  const loadedYoutube = React.useRef(false);
+  const swiperRef = React.useRef(null);
 
-  /* const youtubeClick = (e) => {
-    const { target } = e;
-    target.classList.toggle('youtubeEmbed--playing');
-  }; */
+  function onSwiperObserve(entries) {
+    if (!entries || entries.length <= 0) {
+      return;
+    }
+
+    /* Check ref value to avoid reading
+       stale state in callback... */
+    if (entries[0].isIntersecting && loadedYoutube.current === false) {
+      setLoadYoutube((prevState) => !prevState);
+      loadedYoutube.current = true;
+    }
+  }
+
+  React.useEffect(() => {
+    if (window && 'IntersectionObserver' in window) {
+      if (swiperRef && swiperRef.current) {
+        const swiperObserver = new IntersectionObserver(onSwiperObserve, {
+          rootMargin: '0px 0px',
+          threshold: 0.25,
+        });
+
+        swiperObserver.observe(swiperRef.current);
+      }
+    } else {
+      setLoadYoutube(true);
+      loadedYoutube.current = true;
+    }
+  }, [swiperRef]);
 
   return (
-    <Swiper {...params}>
-      <div>
+    <Swiper
+      navigation
+      pagination={{ clickable: true }}
+      effect="coverflow"
+      coverflowEffect={{
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: false,
+      }}
+      slidesPerView={1}
+      centeredSlides
+      breakpoints={{
+        1024: {
+          slidesPerView: 2,
+        },
+      }}
+      ref={swiperRef}
+    >
+      <SwiperSlide>
         <Img fluid={images.portfolioImage1.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -56,8 +80,8 @@ export default function PortfolioSwiper() {
             construct appropriate markup using inPowerSuite&apos;s database driven layout engine
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage2.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -68,8 +92,8 @@ export default function PortfolioSwiper() {
             Made use of Google Charts and various jQuery plugins
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage3.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -79,8 +103,8 @@ export default function PortfolioSwiper() {
             construct appropriate markup using inPowerSuite&apos;s database driven layout engine.
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage4.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -91,8 +115,8 @@ export default function PortfolioSwiper() {
             construct appropriate markup using inPowerSuite&apos;s database driven layout engine.
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage5.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -104,8 +128,8 @@ export default function PortfolioSwiper() {
             navigating between site pages in the template shown.
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage6.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -115,8 +139,8 @@ export default function PortfolioSwiper() {
             section
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage7.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -126,26 +150,13 @@ export default function PortfolioSwiper() {
             • Responsible for revamping CSS and adding Font Awesome icons
           </p>
         </div>
-      </div>
-      <div>
-        {/* <video controls muted>
-          <source src={execDashVid} type="video/mp4" />
-          <source src={execDashVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
-          Sorry, there was a problem loading this video.
-        </video> */}
-        {/* <div className="youtubeEmbed" onClick={youtubeClick}>
-          <iframe
-            title="Executive Dashboard"
-            src="https://www.youtube-nocookie.com/embed/cHURYQQ9gNk"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div> */}
+      </SwiperSlide>
+      <SwiperSlide>
         <SwiperYoutube
           title="Executive Dashboard"
           id="cHURYQQ9gNk"
           thumbnail={images.portfolioImage8.childImageSharp.fluid}
+          initLoading={loadYoutube}
         />
         <div className="swiperDescription">
           <p>
@@ -155,26 +166,13 @@ export default function PortfolioSwiper() {
             responses from database
           </p>
         </div>
-      </div>
-      <div>
-        {/* <video controls muted>
-          <source src={analyticsVid} type="video/mp4" />
-          <source src={analyticsVidSmall} type="video/mp4" media="all and (max-width: 1024px)" />
-          Sorry, there was a problem loading this video.
-        </video> */}
-        {/*         <div className="youtubeEmbed" onClick={youtubeClick}>
-          <iframe
-            title="Web Analytics"
-            src="https://www.youtube-nocookie.com/embed/PFkRK54CjjI"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div> */}
+      </SwiperSlide>
+      <SwiperSlide>
         <SwiperYoutube
           title="Web Analytics"
           id="PFkRK54CjjI"
           thumbnail={images.portfolioImage9.childImageSharp.fluid}
+          initLoading={loadYoutube}
         />
         <div className="swiperDescription">
           <p>
@@ -185,8 +183,8 @@ export default function PortfolioSwiper() {
             responses from database
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage10.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -196,8 +194,8 @@ export default function PortfolioSwiper() {
             • Responsible for modifying existing CSS, Javascript, and creating new icons and legend
           </p>
         </div>
-      </div>
-      <div>
+      </SwiperSlide>
+      <SwiperSlide>
         <Img fluid={images.portfolioImage11.childImageSharp.fluid} />
         <div className="swiperDescription">
           <p>
@@ -211,7 +209,7 @@ export default function PortfolioSwiper() {
             • Also served as Lead NOC Tech and NOC Manager to provide 24/7 data center support
           </p>
         </div>
-      </div>
+      </SwiperSlide>
     </Swiper>
   );
 }
