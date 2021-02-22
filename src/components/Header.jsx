@@ -44,6 +44,7 @@ export default function Header({ children }) {
           <button
             className={`${styles.menu_button} ${menuOpen}`}
             onClick={handleMenuClick}
+            aria-label="Open mobile menu"
             type="button"
           >
             <span className={styles.menu_icon} />

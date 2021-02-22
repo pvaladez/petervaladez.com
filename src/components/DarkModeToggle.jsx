@@ -12,7 +12,7 @@ export default function DarkModeToggle({ className }) {
       className={`${styles.dark_toggle} ${
         className || ''
       }`}
-      aria-label="Light and dark mode switch"
+      aria-label="Light and dark mode toggle button"
       onClick={() => {
         setColorMode(colorMode === 'dark' ? 'light' : 'dark');
       }}

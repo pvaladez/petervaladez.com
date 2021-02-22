@@ -32,9 +32,9 @@ export default function IndexPage() {
     return [x, y, b];
   };
   const handleMouseMove = ({ clientX, clientY }) => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
-    } /* skip effect for mobile */
+    } /* skip effect for mobile or if client prefers reduced motion */
 
     set({
       xyb: calc(clientX, clientY),
@@ -49,6 +49,7 @@ export default function IndexPage() {
         hideHeader
         hideFooter
       >
+        <h1 className="sr-only">peter valadez dot com</h1>
         <div
           className={styles.mouseMoveContainer}
           onMouseMove={handleMouseMove}

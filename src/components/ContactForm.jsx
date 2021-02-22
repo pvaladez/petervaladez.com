@@ -84,6 +84,7 @@ export default function ContactForm() {
           <label htmlFor="name">Your Name: </label>
           <Field
             name="name"
+            id="name"
             placeholder="WHAT.... is your naaame??? 🌉🧙"
             innerRef={firstInputRef}
           />
@@ -92,7 +93,7 @@ export default function ContactForm() {
           </div>
 
           <label htmlFor="email">Your Email: </label>
-          <Field name="email" placeholder="your.email@emailprovider.yep" />
+          <Field name="email" id="email" placeholder="your.email@emailprovider.yep" />
           <div className={styles.error}>
             <ErrorMessage name="email" />
           </div>
@@ -100,6 +101,7 @@ export default function ContactForm() {
           <label htmlFor="message">Type Away!: </label>
           <Field
             name="message"
+            id="message"
             component="textarea"
             placeholder="Hi!  It's a pleasure to meet you!"
           />
